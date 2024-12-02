@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".menu_location_longlat">
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/card_view" />
+
+    <TextView
+        android:id="@+id/longlat_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="longlat">
+
+    </TextView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#E1E1E1"
+        app:strokeWidth="0.8dp">
+
+        <!-- Main Linear Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <!-- Profile Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Profile Image -->
+                <RelativeLayout
+                    android:id="@+id/relative_background_foto_user"
+                    android:layout_width="60dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/rounded_corner_background"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/icon_camera_foto_user"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/user"
+                        android:backgroundTint="#DE939393"
+                        android:visibility="visible"></ImageView>
+
+                    <ImageView
+                        android:id="@+id/img_background_foto_user"
+                        android:layout_width="60dp"
+                        android:layout_height="80dp"
+                        android:adjustViewBounds="true"></ImageView>
+
+                </RelativeLayout>
+
+
+                <!-- Name and ID -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Name Text -->
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama User"
+                        android:textColor="@color/green"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_jabatan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jabatan"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_divisi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Divisi"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <!-- ID Text -->
+                    <TextView
+                        android:id="@+id/tv_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="NIP"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Jadwal Shift -->
+            <TextView
+                android:id="@+id/tv_jadwal_shift"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="8dp"
+                android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2024"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:layout_marginTop="8dp"
+                android:background="#E1E1E1"></View>
+
+            <!-- Longlat and Button Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Longlat:"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_latitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="longitude"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <!-- Longlat Text -->
+                        <TextView
+                            android:id="@+id/tv_longlat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=", "
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/tv_longitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="latitude"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <!-- Button -->
+                <Button
+                    android:id="@+id/btn_lihat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:strokeColor="@color/green"
+                    android:text="Lihat"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/id_testing_longlat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/rounded_shape_for_button"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:scaleType="fitXY"
+                android:text="CHECK IN"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

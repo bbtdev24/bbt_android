@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.project.bbt.izinfullday">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/id_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="8dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/white"
+
+                app:title="Form CDT"
+                app:titleTextColor="@color/green" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:scrollbars="none">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/longitude"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="long"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/lat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="lat"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp" />
+
+                <EditText
+                    android:id="@+id/nopengajuan"
+                    android:layout_width="191dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="95dp"
+                    android:hint="nomor pengajuan"
+                    android:inputType="text"
+                    android:longClickable="false"
+                    android:selectAllOnFocus="true"
+                    android:textColor="#000000"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/formcdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Form CDT"
+                    android:textColor="#333"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/announcement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/formcdt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:text="Note : Approval berlaku 1x24 jam mohon konfirmasi ke atasan"
+                    android:textColor="#333"
+                    android:textSize="10dp"
+                    android:textStyle="bold|italic"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/opsi"
+                    android:layout_width="337.4649dp"
+                    android:layout_height="59.0463dp"
+                    android:layout_below="@+id/announcement"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/opsi_cdt"
+                    android:visibility="gone" />
+
+                <RadioGroup
+                    android:id="@+id/option"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/urgent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner_background"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:padding="16dp"
+                        android:text="Urgent"
+                        android:textSize="13sp" />
+
+                    <RadioButton
+                        android:id="@+id/terencana"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner_background"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:padding="16dp"
+                        android:text="Terencana"
+                        android:textSize="13sp" />
+                </RadioGroup>
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/option"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/tanggal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/editext_rounded_outline"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:fontFamily="@font/opensansreguler"
+                            android:hint="Tanggal"
+                            android:inputType="datetime"
+                            android:padding="15dp"
+                            android:paddingLeft="10dp"
+                            android:selectAllOnFocus="true"
+                            android:textColor="#000000" />
+
+                        <ImageButton
+                            android:id="@+id/tambah"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="16dp"
+                            android:background="@null"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/btn_tambah" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_karyawan_yang_menggantikan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/container"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Karyawan Yang Menggantikan"
+                    android:textSize="16sp"></TextView>
+
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/karyawan"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/tv_karyawan_yang_menggantikan"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/editext_rounded_outline"
+                    app:hintText="Nama Pegawai" />
+
+                <TextView
+                    android:id="@+id/tv_upload_dokumen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/karyawan"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Upload Dokumen"
+                    android:textSize="16sp"></TextView>
+
+                <RelativeLayout
+                    android:id="@+id/relative_upload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_upload_dokumen"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:id="@+id/upload"
+                        android:layout_width="match_parent"
+                        android:layout_height="196.1712dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:scaleType="fitXY"
+                        android:text="Mulai Tanggal"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/gambar1"
+                        android:layout_width="188dp"
+                        android:layout_height="132dp"
+                        android:layout_alignStart="@+id/upload"
+                        android:layout_alignLeft="@+id/upload"
+                        android:layout_alignTop="@+id/upload"
+                        android:layout_alignEnd="@+id/upload"
+                        android:layout_alignRight="@+id/upload"
+                        android:layout_alignBottom="@+id/upload"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp" />
+
+                    <Button
+                        android:id="@+id/uploadbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/rounded_shape_for_button"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:text="Pilih File"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_keterangan_tambahan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/relative_upload"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/opensansbold"
+                    android:text="Keterangan Tambahan"
+                    android:textSize="16sp"></TextView>
+
+                <EditText
+                    android:id="@+id/keterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="154.6803dp"
+                    android:layout_below="@id/tv_keterangan_tambahan"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="30dp"
+                    android:background="@drawable/editext_rounded_outline"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="20dp"
+                    android:scrollHorizontally="false"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/pengajuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/keterangan"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_shape_for_button"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:text="Pengajuan"
+                    android:textColor="@color/white" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:headerLayout="@layout/nav_header_main"
+            app:menu="@menu/activity_main_drawer" />
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/green" />
+
+    <TextView
+        android:id="@+id/tvLoadingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/opensansbold"
+        android:text="Harap tunggu"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>

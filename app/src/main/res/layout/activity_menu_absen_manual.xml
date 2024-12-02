@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.project.bbt.menu_absen_manual">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="8dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:id="@+id/id_toolbar"
+                android:layout_height="56dp"
+                android:background="@color/white"
+
+                app:title="Absen Mobile"
+                app:titleTextColor="@color/green" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <!-- The ActionBar displayed at the top -->
+
+            <include
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- The main content view where fragments are loaded -->
+            <FrameLayout
+                android:id="@+id/flContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/biodata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="Absen Mobile"
+                android:textColor="#333"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/hari_ini"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hari ini"
+                android:textColor="#333"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.092" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hari_ini"
+                app:layout_constraintVertical_bias="0.06">
+
+                <TextView
+                    android:id="@+id/judultitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih"
+                    android:textColor="#333"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:layout_width="275.2008dp"
+                    android:layout_height="31.9992dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_absenmobile"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:layout_width="275.2008dp"
+                    android:layout_height="31.9992dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_absenmanual2"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:layout_width="275.2008dp"
+                    android:layout_height="31.9992dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/rekap_absenmanual"
+                    android:visibility="gone" />
+
+                <ImageButton
+                    android:layout_width="275.2008dp"
+                    android:layout_height="31.9992dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@null"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_approval_absenmanual"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mobile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E1E1E1"
+                        app:strokeWidth="0.8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/person_image"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/opensansreguler"
+                                android:text="Absen Mobile"
+                                android:textColor="#4D4D4D"
+                                android:textSize="16dp" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/navigation" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/absenmanual"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E1E1E1"
+                        app:strokeWidth="0.8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/person_image"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/opensansreguler"
+                                android:text="Absen Manual"
+                                android:textColor="#4D4D4D"
+                                android:textSize="16dp" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/navigation" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/rekap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E1E1E1"
+                        app:strokeWidth="0.8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/person_image"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/opensansreguler"
+                                android:text="Rekap Absen Manual"
+                                android:textColor="#4D4D4D"
+                                android:textSize="16dp" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/navigation" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/approval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+
+                        android:layout_marginRight="16dp"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="6dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="#E1E1E1"
+                        app:strokeWidth="0.8dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="16dp">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/person_image"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/opensansreguler"
+                                android:text="Approval Absen Manual"
+                                android:textColor="#4D4D4D"
+                                android:textSize="16dp" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/navigation" />
+
+                        </RelativeLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

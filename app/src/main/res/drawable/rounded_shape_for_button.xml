@@ -1,0 +1,5 @@
+<!-- rounded_corner_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#4F823F" /> <!-- Atau transparan jika ingin menggunakan tinting sepenuhnya -->
+    <corners android:radius="8dp" />
+</shape>

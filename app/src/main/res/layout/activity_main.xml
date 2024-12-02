@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.bbt.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/relative_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/lineargambar">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center_horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="30dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/icon"
+                                    android:layout_width="200dp"
+                                    android:layout_height="100dp"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="38dp"
+                                    android:layout_marginBottom="8dp"
+                                    android:background="@drawable/logo_ess"
+                                    android:scaleType="fitCenter" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:id="@+id/textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="70dp"
+                            android:fontFamily="@font/opensansbold"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="Selamat Datang"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="40dp"
+                            tools:ignore="NotSibling" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textView"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/opensanssemibold"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:text="Silahkan login untuk melanjutkan"
+                            android:textAlignment="center"
+                            android:textColor="#4C4C4C"
+                            android:textSize="16dp"
+                            tools:ignore="NotSibling" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/username"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/textView2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="30dp"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            app:boxCornerRadiusBottomEnd="4dp"
+                            app:boxCornerRadiusBottomStart="4dp"
+                            app:boxCornerRadiusTopEnd="4dp"
+                            app:boxCornerRadiusTopStart="4dp"
+                            app:boxStrokeColor="#4F823F">
+
+                            <EditText
+                                android:id="@+id/editTextnik_baru"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:drawableLeft="@drawable/ic_user"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/opensansmedium"
+                                android:hint="NIK Karyawan"
+                                android:singleLine="true"
+                                android:textSize="16dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_input_password"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/username"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            app:boxCornerRadiusBottomEnd="4dp"
+                            app:boxCornerRadiusBottomStart="4dp"
+                            app:boxCornerRadiusTopEnd="4dp"
+                            app:boxCornerRadiusTopStart="4dp"
+                            app:boxStrokeColor="#4F823F"
+                            app:endIconMode="password_toggle">
+
+                            <EditText
+                                android:id="@+id/editTextpassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:drawableStart="@drawable/ic_lock"
+                                android:drawablePadding="16dp"
+                                android:fontFamily="@font/opensansmedium"
+                                android:hint="Password"
+                                android:inputType="textPassword"
+                                android:singleLine="true"
+                                android:textSize="16dp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linear_bt_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txt_input_password"
+                            android:layout_marginTop="20dp"
+                            android:clipToPadding="false"
+                            android:padding="16dp"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp">
+
+                            <Button
+                                android:id="@+id/login"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/password"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/rounded_shape_for_button"
+                                android:backgroundTint="@color/green"
+                                android:fontFamily="@font/opensansbold"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                android:gravity="center"
+                                android:scaleType="fitXY"
+                                android:text="Login"
+                                android:textAllCaps="false"
+                                android:textColor="#FFF" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lineargambar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/opensansmedium"
+                        android:text="Mobile ESS © 2024 Bank Tanah"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.project.bbt.kehadiran">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/relative_button"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:elevation="8dp">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/id_toolbar"
+                    style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@color/white"
+                    app:title="Laporan Absensi Personal"
+                    app:titleTextColor="@color/green" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <ScrollView
+                android:scrollbars="none"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <include
+                            layout="@layout/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:id="@+id/flContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/absensipersonal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:text="Laporan Absensi Personal"
+                        android:textColor="#333"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.502"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/nama"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:gravity="center"
+                        android:text="Nama"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/namaedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:focusable="false"
+                        android:fontFamily="@font/opensansreguler"
+                        android:hint="Nama"
+                        android:includeFontPadding="false"
+                        android:longClickable="false"
+                        android:padding="12dp"
+                        android:paddingLeft="0dp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tanggalperiode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:gravity="center"
+                        android:text="Periode"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/periodeedit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:focusable="false"
+                        android:fontFamily="@font/opensansreguler"
+                        android:foregroundGravity="center_horizontal"
+                        android:hint="Periode"
+                        android:includeFontPadding="false"
+                        android:longClickable="false"
+                        android:padding="12dp"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="0dp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:gravity="center"
+                        android:text="Pilih Tanggal"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/tanggalawal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/editext_rounded_outline"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:hint="Dari Tanggal"
+                            android:inputType="datetime"
+                            android:padding="14dp"
+                            android:paddingLeft="10dp"
+                            android:selectAllOnFocus="true"
+                            android:textColor="#000000" />
+
+                        <ImageButton
+                            android:id="@+id/tambah"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="-40dp"
+                            android:background="@null"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/btn_tambah" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/tanggalakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/editext_rounded_outline"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:hint="Sampai Tanggal"
+                            android:inputType="datetime"
+                            android:padding="14dp"
+                            android:paddingLeft="10dp"
+                            android:selectAllOnFocus="true"
+                            android:textColor="#000000"
+                            android:visibility="gone" />
+
+                        <ImageButton
+                            android:id="@+id/hapus"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:layout_marginLeft="-40dp"
+                            android:background="@null"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/btn_erase"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/list"
+                        android:layout_width="match_parent"
+                        android:layout_height="380dp"
+                        android:layout_marginTop="20dp"
+                        android:nestedScrollingEnabled="true">
+
+                    </ListView>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@id/relative_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/ceklihat"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_shape_for_button"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:scaleType="fitXY"
+                android:text="Lihat"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+</androidx.drawerlayout.widget.DrawerLayout>

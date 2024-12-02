@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.project.bbt.pengajuan_seragam">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="8dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/id_toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/white"
+
+                app:title="Form Pengajuan Seragam"
+                app:titleTextColor="@color/green" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <!-- The ActionBar displayed at the top -->
+
+                    <include
+                        layout="@layout/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <!-- The main content view where fragments are loaded -->
+                    <FrameLayout
+                        android:id="@+id/flContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/kodejabatan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="long"
+                    android:textColor="#333"
+                    android:textSize="12dp"
+                    android:visibility="gone" />
+
+                <EditText
+                    android:id="@+id/nopengajuan"
+                    android:layout_width="191dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="23dp"
+                    android:layout_marginTop="95dp"
+                    android:hint="nomor pengajuan"
+                    android:inputType="text"
+                    android:longClickable="false"
+                    android:selectAllOnFocus="true"
+                    android:textColor="#000000"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/harga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="19dp"
+                    android:text="Harga"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/formcdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Form Pengajuan Seragam"
+                    android:textColor="#333"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:id="@+id/linear_list_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Keterangan Pengajuan"
+                        android:textColor="@color/black">
+                    </TextView>
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/keteranganpengajuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/formcdt"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        app:hintText="Keterangan" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Pilih Nama Pegawai"
+                        android:textColor="@color/black"></TextView>
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/karyawan"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/keteranganpengajuan"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        app:hintText="Pilih Pegawai" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="NIP Pegawai"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/nik"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/karyawan"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="NIP"
+                        android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Nama Pegawai"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/nama"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/nik"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Nama"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Jabatan"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/jabatan"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/nama"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Jabatan"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Kantor Cabang"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/lokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/jabatan"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Kantor"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Departement"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/department"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/lokasi"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Departement"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Jenis Seragam"
+                        android:textColor="@color/black"></TextView>
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/jenisseragam"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/department"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        app:hintText="Jenis Seragam" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Kode Seragam"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:visibility="gone"
+                        android:id="@+id/kode"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/jenisseragam"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Kode Seragam"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Maksimal Pengajuan"
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:visibility="gone"
+                        android:id="@+id/max"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/kode"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:hint="Maksimal Pengajuan"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/opensanssemibold"
+                        android:text="Qty Seragam"
+                        android:textColor="@color/black"></TextView>
+
+
+                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                        android:id="@+id/qty"
+                        android:layout_width="match_parent"
+                        android:layout_height="59.0463dp"
+                        android:layout_below="@id/max"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/editext_rounded_outline"
+                        app:hintText="Qty" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/pengajuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linear_list_edittext"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/rounded_shape_for_button"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:scaleType="fitXY"
+                    android:text="Pengajuan"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+</androidx.drawerlayout.widget.DrawerLayout>

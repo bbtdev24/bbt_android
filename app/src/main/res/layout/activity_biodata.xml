@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dl_profil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.bbt.biodata">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/persiapanbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:elevation="8dp">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/Widget.MaterialComponents.Toolbar.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="#FFFFFF"
+
+                app:title="Data Pegawai"
+                app:titleTextColor="@color/green" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/persiapanbar"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/datainduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:strokeColor="#E1E1E1"
+                app:strokeWidth="0.8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/opensansreguler"
+                            android:text="Data Induk"
+                            android:textColor="#4D4D4D"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/induk_lengkapi_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/rounded_shape_for_button"
+                            android:backgroundTint="#FFEEEB"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Lengkapi Data"
+                            android:textColor="@color/red"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/navigation" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/datadetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:strokeColor="#E1E1E1"
+                app:strokeWidth="0.8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/opensansreguler"
+                            android:text="Data Detail"
+                            android:textColor="#4D4D4D"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/detail_lengkapi_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/rounded_shape_for_button"
+                            android:backgroundTint="#FFEEEB"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Lengkapi Data"
+                            android:textColor="@color/red"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/navigation" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/datakeluarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:strokeColor="#E1E1E1"
+                app:strokeWidth="0.8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="16dp"
+                            android:fontFamily="@font/opensansreguler"
+                            android:text="Data Keluarga"
+                            android:textColor="#4D4D4D"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/keluarga_lengkapi_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/rounded_shape_for_button"
+                            android:backgroundTint="#FFEEEB"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Lengkapi Data"
+                            android:textColor="@color/red"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/opensansreguler"
+                        android:src="@drawable/navigation" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/datapendidikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardElevation="0dp"
+                app:strokeColor="#E1E1E1"
+                app:strokeWidth="0.8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="16dp"
+                            android:text="Data Pendidikan"
+                            android:textColor="#4D4D4D"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/pendidikan_lengkapi_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:background="@drawable/rounded_shape_for_button"
+                            android:backgroundTint="#FFEEEB"
+                            android:fontFamily="@font/opensansreguler"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:text="Lengkapi Data"
+                            android:textColor="@color/red"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/navigation" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

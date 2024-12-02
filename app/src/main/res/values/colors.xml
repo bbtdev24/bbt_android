@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF265416</color>
+    <color name="colorPrimaryDark">#FF265416</color>
+    <color name="colorAccent">#FF265416</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0F4C81</color>
+    <color name="green">#FF377E20</color>
+    <color name="white">#FFFFFF</color>
+    <color name="stroke_color_cardview">#E1E1E1</color>
+    <color name="black">#DE000000</color>
+
+
+</resources>

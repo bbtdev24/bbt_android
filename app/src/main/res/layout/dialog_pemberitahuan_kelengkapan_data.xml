@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:background="@drawable/dialog_background_pemberitahuan"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:text="Perhatian"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_pesan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp"
+        android:text="Ada data Pegawai yang belum lengkap, mohon lengkapi data anda!"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/cb_jangan_tampilkan_lagi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jangan tampilkan pesan ini lagi" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <Button
+            android:id="@+id/btn_nanti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_shape_for_button"
+            android:backgroundTint="#F3F3F3"
+            android:text="Nanti" />
+
+        <Button
+            android:id="@+id/btn_lengkapi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rounded_shape_for_button"
+            android:backgroundTint="@color/green"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Lengkapi data"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

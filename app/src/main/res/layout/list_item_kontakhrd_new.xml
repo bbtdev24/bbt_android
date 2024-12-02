@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:theme="@style/Theme.MaterialComponents.Light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#E4E4E4"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Nama dan nomor telepon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Gambar atau Icon -->
+                <ImageView
+                    android:src="@drawable/user"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- Nama dan Nomor Telepon -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/executive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="nomor_telpon"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="8dp"
+                android:background="#DEDADADA"
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp" />
+
+            <!-- Area -->
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <!-- Scope -->
+            <TextView
+                android:id="@+id/scoop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Scope: PKWT Karyawan, Punishment, Seragam, Pendaftaran BPJS Ketenagakerjaan dan BPJS Kesehatan, Dokumen Administrasi Resign, Paklaring, Surat Keterangan Kerja, Pengambilan Jaminan."
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <!-- Tombol Chat -->
+            <Button
+                android:visibility="gone"
+                android:backgroundTint="@color/green"
+                android:id="@+id/chat"
+                android:background="@drawable/rounded_corner_background"
+                android:layout_gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Chat"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
