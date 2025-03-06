@@ -1,7 +1,7 @@
 package com.project.bbt.Item;
 
 public class LoginItem {
-    public static final String LOGIN_URL = "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/login.php";
+    public static final String LOGIN_URL = "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/login.php";
 
     public static final String KEY_NIK = "str_nip_karyawan";
     public static final String PASSWORD = "password";

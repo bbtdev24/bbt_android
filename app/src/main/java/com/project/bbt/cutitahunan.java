@@ -681,7 +681,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
                 android.R.color.transparent
         );
 
-        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_tahunan", null,
+        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_tahunan", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -756,7 +756,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
                 android.R.color.transparent
         );
 
-        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_tahunan", null,
+        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_tahunan", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -874,8 +874,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
 
     private void image() {
 
-
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_cuti_tahunan.php",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_cuti_tahunan.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -940,7 +939,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
 
     private void terencanafirst() {
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1016,7 +1015,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
 
         for (int i = 0; i < editTextList.size(); i++) {
             final String tanggal = editTextList.get(i).getText().toString();
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1083,7 +1082,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
 
     private void urgentfirst() {
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1159,7 +1158,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
 
         for (int i = 0; i < editTextList.size(); i++) {
             final String tanggal = editTextList.get(i).getText().toString();
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1229,7 +1228,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
     }
 
     private void postnotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1255,7 +1254,7 @@ public class cutitahunan extends AppCompatActivity implements RadioGroup.OnCheck
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://203.100.57.36/project/ess-api-android-bt/rest_server/Push_Notification/push_notif_v1.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

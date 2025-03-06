@@ -223,7 +223,7 @@ public class setting extends AppCompatActivity {
         String confirmpassword = ConfirmPasswordBaru.getText().toString();
         final String confirmpasswordmd5 = md5(confirmpassword);
 
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -291,7 +291,7 @@ public class setting extends AppCompatActivity {
 
     private void updatepassword (){
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

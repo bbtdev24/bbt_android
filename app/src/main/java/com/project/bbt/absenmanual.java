@@ -73,6 +73,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -207,14 +208,15 @@ public class absenmanual extends AppCompatActivity {
         uploadbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkPermissionREAD_EXTERNAL_STORAGE(absenmanual.this)) {
+                if (checkStoragePermissions(absenmanual.this)) {
 
-//                    File photoFile = new File(Environment.getExternalStorageDirectory(), "MyPicture.jpg");
+                    // Simpan di direktori aplikasi (tidak butuh izin storage di Android 10+)
                     File photoFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture.jpg");
+
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         imageUri = FileProvider.getUriForFile(
                                 absenmanual.this,
-                                BuildConfig.APPLICATION_ID + ".provider",  // Pastikan sesuai dengan authorities di manifest
+                                BuildConfig.APPLICATION_ID + ".provider",  // Sesuai dengan authorities di manifest
                                 photoFile
                         );
                     } else {
@@ -414,7 +416,7 @@ public class absenmanual extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index",
                 new Response.Listener<String>() {
 
                     @Override
@@ -456,6 +458,7 @@ public class absenmanual extends AppCompatActivity {
                 sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
                 String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK ,null);
                 String jabatan = text_jabatan.getText().toString();
+
 //                String Lokasi = lokasi.getSelectedItem().toString();
 //                String[] splited_text = Lokasi.split(" \\(");
 //                Lokasi = splited_text[1];
@@ -489,12 +492,13 @@ public class absenmanual extends AppCompatActivity {
                         DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
                 )
         );
+
         RequestQueue requestQueue2 = Volley.newRequestQueue(this);
         requestQueue2.add(stringRequest2);
     }
 
     private void getLokasi() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/lokasi/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/lokasi/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -502,14 +506,13 @@ public class absenmanual extends AppCompatActivity {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String depo = null;
+
                             if (jsonObject.getString("status").equals("true")) {
                                 JSONArray jsonArray = jsonObject.getJSONArray("data");
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                                     depo = jsonObject1.getString("depo_nama");
-                                    String sn = jsonObject1.getString("SN");
-                                    Lokasi.add(depo + " (" + sn + ") ");
-
+                                    Lokasi.add(depo);
                                 }
                             }
                             lokasi.setTitle("Pilih Pegawai");
@@ -594,6 +597,44 @@ public class absenmanual extends AppCompatActivity {
             return true;
         }
 
+    }
+
+    public boolean checkStoragePermissions(final Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> permissions = new ArrayList<>();
+
+            // Cek izin kamera
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.CAMERA);
+            }
+
+            // Android 13+ (API 33 ke atas) butuh READ_MEDIA_IMAGES buat akses gambar
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                    permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+                }
+
+            } else {
+                // Android 12 ke bawah butuh READ_EXTERNAL_STORAGE
+                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+                }
+
+                // Android 9 (API 28) ke bawah butuh WRITE_EXTERNAL_STORAGE
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+                    if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    }
+                }
+            }
+
+            // Kalau ada izin yang belum granted, request ke user
+            if (!permissions.isEmpty()) {
+                ActivityCompat.requestPermissions(activity, permissions.toArray(new String[0]), 100);
+                return false;
+            }
+        }
+        return true;
     }
 
     public void showDialog(final String msg, final Context context, final String permission) {
@@ -695,7 +736,7 @@ public class absenmanual extends AppCompatActivity {
 
     public void upload_foto_absen_berita_acara() {
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_absen_berita_acara.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_absen_berita_acara.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

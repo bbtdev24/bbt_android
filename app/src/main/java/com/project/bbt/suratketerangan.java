@@ -213,7 +213,7 @@ public class suratketerangan extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index_last_nomor_pengajuan_sk", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index_last_nomor_pengajuan_sk", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -263,7 +263,7 @@ public class suratketerangan extends AppCompatActivity {
     }
 
     private void insert_pengajuan_sk() {
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index_post_pengajuan_sk",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index_post_pengajuan_sk",
                     new Response.Listener<String>() {
 
                         @Override

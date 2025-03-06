@@ -98,7 +98,7 @@ public class serahterima extends AppCompatActivity {
                 );
                 sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
                 String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru="+nik_baru,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru="+nik_baru,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -249,7 +249,7 @@ public class serahterima extends AppCompatActivity {
     }
 
     private void updatedata() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusserahterima",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusserahterima",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -347,7 +347,7 @@ public class serahterima extends AppCompatActivity {
 
             sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
             final String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -367,7 +367,7 @@ public class serahterima extends AppCompatActivity {
                                             itemHolder.tvDot.setBackgroundResource(R.drawable.timeline_progress);
                                         }
 
-                                    StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+                                    StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                                             new Response.Listener<String>() {
                                                 @Override
                                                 public void onResponse(String response) {
@@ -390,7 +390,7 @@ public class serahterima extends AppCompatActivity {
                                                                 }
                                                             }
                                                         }
-                                                        StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+                                                        StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                                                                 new Response.Listener<String>() {
                                                                     @Override
                                                                     public void onResponse(String response) {
@@ -413,7 +413,7 @@ public class serahterima extends AppCompatActivity {
                                                                                     }
                                                                                 }
 
-                                                                                StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+                                                                                StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                                                                                         new Response.Listener<String>() {
                                                                                             @Override
                                                                                             public void onResponse(String response) {
@@ -437,7 +437,7 @@ public class serahterima extends AppCompatActivity {
                                                                                                         }
 
                                                                                                     }
-                                                                                                    StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+                                                                                                    StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                                                                                                             new Response.Listener<String>() {
                                                                                                                 @Override
                                                                                                                 public void onResponse(String response) {
@@ -461,7 +461,7 @@ public class serahterima extends AppCompatActivity {
                                                                                                                             }
 
                                                                                                                         }
-                                                                                                                        StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
+                                                                                                                        StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusterima?nik_baru=" + nik_baru,
                                                                                                                                 new Response.Listener<String>() {
                                                                                                                                     @Override
                                                                                                                                     public void onResponse(String response) {
@@ -757,7 +757,7 @@ public class serahterima extends AppCompatActivity {
                                                 );
                                                 sDialog.cancel();
 
-                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusalatkerja",
+                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusalatkerja",
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {
@@ -849,7 +849,7 @@ public class serahterima extends AppCompatActivity {
                                                 );
                                                 sDialog.cancel();
 
-                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statushardcopy",
+                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statushardcopy",
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {
@@ -941,7 +941,7 @@ public class serahterima extends AppCompatActivity {
                                                 );
                                                 sDialog.cancel();
 
-                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statussoftcopy",
+                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statussoftcopy",
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {
@@ -1033,7 +1033,7 @@ public class serahterima extends AppCompatActivity {
                                                 );
                                                 sDialog.cancel();
 
-                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statusproject",
+                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statusproject",
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {
@@ -1125,7 +1125,7 @@ public class serahterima extends AppCompatActivity {
                                                 );
                                                 sDialog.cancel();
 
-                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statussdm",
+                                                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statussdm",
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {

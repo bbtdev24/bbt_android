@@ -102,7 +102,7 @@
                                 android:id="@+id/tv_date"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Sabtu, 21 Sep 2024"
+                                android:text="Sabtu, 21 Sep 2025"
                                 android:textColor="@color/black"
                                 android:textSize="18sp" />
 
@@ -111,7 +111,7 @@
                                 android:id="@+id/tv_shift"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2024"
+                                android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2025"
                                 android:textColor="@color/green"
                                 android:textSize="16sp"
                                 android:visibility="gone" />
@@ -403,7 +403,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:padding="8dp"
-                                    android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2024"
+                                    android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2025"
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     android:visibility="gone" />
@@ -478,6 +478,9 @@
                 android:paddingBottom="16dp">
 
                 <Button
+                    android:enabled="true"
+                    android:clickable="true"
+                    android:visibility="visible"
                     android:id="@+id/bt_getin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

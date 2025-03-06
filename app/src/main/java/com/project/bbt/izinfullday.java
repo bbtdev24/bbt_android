@@ -524,7 +524,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
         );
 
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_full_day", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_full_day", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -589,7 +589,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
                 android.R.color.transparent
         );
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_full_day", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_full_day", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -690,7 +690,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void image() {
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/upload.php",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/upload.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -752,7 +752,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
 
     private void getLokasi() {
         String lokasi = txt_jabatan.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi,
                 new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -805,7 +805,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void postfullfirst() {
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -882,7 +882,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
 
         for (int i = 0; i < editTextList.size(); i++) {
             final String tanggal = editTextList.get(i).getText().toString();
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -953,7 +953,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void postfullfirstnogambar() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1029,7 +1029,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
 
         for (int i = 0; i < editTextList.size(); i++) {
             final String tanggal = editTextList.get(i).getText().toString();
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1097,7 +1097,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void postNotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan="+txt_nomor.getText().toString()+"&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan="+txt_nomor.getText().toString()+"&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1123,7 +1123,7 @@ public class  izinfullday extends AppCompatActivity implements RadioGroup.OnChec
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

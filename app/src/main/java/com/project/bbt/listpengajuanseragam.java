@@ -194,7 +194,7 @@ public class listpengajuanseragam extends AppCompatActivity {
         movieItemList.clear();
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index?nik_pengajuan=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index?nik_pengajuan=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -367,7 +367,7 @@ public class listpengajuanseragam extends AppCompatActivity {
                 statusdistribusidepo.setImageResource(R.drawable.btn_hangus);
             }
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + movieItem.getJabatan_karyawan_seragam(),
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + movieItem.getJabatan_karyawan_seragam(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

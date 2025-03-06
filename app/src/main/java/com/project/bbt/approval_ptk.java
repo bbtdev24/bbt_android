@@ -195,7 +195,7 @@ public class approval_ptk extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Ptk/index_jabatan?jabatan=" + text_jabatan.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Ptk/index_jabatan?jabatan=" + text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

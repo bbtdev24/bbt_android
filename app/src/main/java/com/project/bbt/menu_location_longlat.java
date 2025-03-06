@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
@@ -23,10 +24,12 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -61,19 +64,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class menu_location_longlat extends FragmentActivity implements OnMapReadyCallback {
-
     private LocationCallback locationCallback;
-
-    private static final String URL = "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index_get_longlat_user"; // Ganti dengan URL API lu
-
+    private static final String URL = "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index_get_longlat_user"; // Ganti dengan URL API lu
     private static final double RADIUS = 100.0; // Radius dalam meter
     String str_latitude, str_longitude;
     TextView longlat_user;
@@ -107,8 +110,12 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
     String formattedDate;
     String str_only_date;
     String getin, getout;
-
     String noUrut,status,idlokasi_karyawan_absen;
+    TextView tv_near_location;
+
+    private AlertDialog progressDialog;
+    private static final int MY_PERMISSIONS_REQUEST = 100; // Request code izin
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -132,6 +139,8 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
         //Gunakan data tersebut sesuai kebutuhan, misalnya ditampilkan di log:
         Log.d("IntentData", "getin: " + getin + ", getout: " + getout);
+
+        tv_near_location = findViewById(R.id.tv_near_location);
 
         bt_absen_check = findViewById(R.id.id_testing_longlat);
         longlat_user = findViewById(R.id.longlat_user);
@@ -205,8 +214,10 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
         // Cek kondisi
         if ("1".equals(getin) && "0".equals(getout)) {
             bt_absen_check.setText("CHECK IN");
+
         } else if ("1".equals(getin) && "1".equals(getout)) {
             bt_absen_check.setText("CHECK OUT");
+
         } else {
             bt_absen_check.setText("UNKNOWN STATE");
         }
@@ -217,8 +228,8 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
-        mMap = googleMap;
 
+        mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
@@ -227,6 +238,7 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
         mMap.setMyLocationEnabled(true);
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+
             if (location != null) {
                 LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15));
@@ -244,6 +256,7 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                         Toast.makeText(this, "Fake GPS detected! Lokasi tidak valid.", Toast.LENGTH_SHORT).show();
                         // Blokir atau logout user (sesuai kebutuhan)
                         return;
+
                     } else {
                         fetchLocationData(location.getLatitude(), location.getLongitude());
                     }
@@ -302,6 +315,8 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                         if (isInRadius) {
 
                             Toast.makeText(menu_location_longlat.this, "Dekat dengan: " + nearestLocationName, Toast.LENGTH_SHORT).show();
+
+                            tv_near_location.setText(nearestLocationName);
 
                             if (getin.equals("1") && getout.equals("0")) {
 
@@ -428,27 +443,120 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
                         // Tampilkan pesan atau dialog sesuai dengan status isInRadius
                         if (isInRadius) {
+
                             Toast.makeText(menu_location_longlat.this, "Dekat dengan: " + nearestLocationName, Toast.LENGTH_SHORT).show();
+                            tv_near_location.setText(nearestLocationName);
 
                             if (getin.equals("1") && getout.equals("0")) {
 
                                 if (img_background_foto_user.getDrawable() == null) {
 
-                                    if (checkPermissionREAD_EXTERNAL_STORAGE(menu_location_longlat.this)) {
+//                                    if (checkPermissionREAD_EXTERNAL_STORAGE(menu_location_longlat.this)) {
+//
+//                                        cv = new ContentValues();
+//                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+//                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+//
+//                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        intent.putExtra("android.intent.extras.CAMERA_FACING", Camera.CameraInfo.CAMERA_FACING_FRONT);
+//                                        startActivityForResult(intent, 1);
+//
+//                                    } else {
+//
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
 
-                                        cv = new ContentValues();
-                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
-                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+//--------------------------------------------------------------------------------------------------------------------------------
 
-                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//                                    if (checkPermissions(menu_location_longlat.this)) {
+//                                        cv = new ContentValues();
+//                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+//                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+//
+//                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        intent.putExtra("android.intent.extras.CAMERA_FACING", Camera.CameraInfo.CAMERA_FACING_FRONT);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
 
+                                    //-------------------------------- SUDAH BISA, TAPI ADNROID 13 KEATAS GABISA------------------------------
+
+//                                    if (checkPermission(menu_location_longlat.this)) {
+//                                        ContentValues cv = new ContentValues();
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                                            // ✅ ANDROID 10+ (Tanpa WRITE_EXTERNAL_STORAGE)
+//                                            cv.put(MediaStore.Images.Media.DISPLAY_NAME, "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                            cv.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+//                                            cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyAppFolder");
+//
+//                                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                        } else {
+//                                            // ✅ ANDROID 9 KE BAWAH (Pakai WRITE_EXTERNAL_STORAGE + FileProvider)
+//                                            File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture.jpg");
+////                                          imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.fileprovider", imageFile);
+//                                            imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                        }
+//
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
+
+                                    //--------------------------------------------------------------------------------------------
+
+                                    //dicomment dulu untuk infininx 24feb25
+//                                    if (checkPermission(menu_location_longlat.this)) {
+//                                        ContentValues cv = new ContentValues();
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                                            // ✅ ANDROID 10+ (Tanpa WRITE_EXTERNAL_STORAGE)
+//                                            cv.put(MediaStore.Images.Media.DISPLAY_NAME, "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                            cv.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+//                                            cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyAppFolder");
+//
+//                                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                            if (imageUri == null) {
+//                                                // Gagal dapat URI, coba pakai penyimpanan Private
+//                                                File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                                imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                            }
+//
+//                                        } else {
+//                                            // ✅ ANDROID 9 KE BAWAH (Pakai WRITE_EXTERNAL_STORAGE + FileProvider)
+//                                            File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture.jpg");
+//                                            imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                        }
+//
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
+
+                                    if (checkPermission(menu_location_longlat.this)) {
                                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                                        File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture_" + System.currentTimeMillis() + ".jpg");
+                                        imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+
                                         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                                        intent.putExtra("android.intent.extras.CAMERA_FACING", Camera.CameraInfo.CAMERA_FACING_FRONT);
+                                        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
                                         startActivityForResult(intent, 1);
-
                                     } else {
-
                                         Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -460,20 +568,113 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
                                 if (img_background_foto_user.getDrawable() == null) {
 
-                                    if (checkPermissionREAD_EXTERNAL_STORAGE(menu_location_longlat.this)) {
+//                                    if (checkPermissionREAD_EXTERNAL_STORAGE(menu_location_longlat.this)) {
+//
+//                                        cv = new ContentValues();
+//                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+//                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+//
+//                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        startActivityForResult(intent, 1);
+//
+//                                    } else {
+//
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
 
-                                        cv = new ContentValues();
-                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
-                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+                                    //-----------------------------------------------------------------
 
-                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//                                    if (checkPermissions(menu_location_longlat.this)) {
+//                                        cv = new ContentValues();
+//                                        cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+//                                        cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+//
+//                                        imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        intent.putExtra("android.intent.extras.CAMERA_FACING", Camera.CameraInfo.CAMERA_FACING_FRONT);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
 
+
+
+                                    //---------------------------------------- BISA, TAPI UNTUK ANDROID 13 KEATAS GABISA
+
+//                                    if (checkPermission(menu_location_longlat.this)) {
+//                                        ContentValues cv = new ContentValues();
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                                            // ✅ ANDROID 10+ (Tanpa WRITE_EXTERNAL_STORAGE)
+//                                            cv.put(MediaStore.Images.Media.DISPLAY_NAME, "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                            cv.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+//                                            cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyAppFolder");
+//
+//                                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//                                        } else {
+//                                            // ✅ ANDROID 9 KE BAWAH (Pakai WRITE_EXTERNAL_STORAGE + FileProvider)
+//                                            File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture.jpg");
+////                                            imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.fileprovider", imageFile);
+//                                            imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                        }
+//
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
+
+                                    //----------------------------------------------------------------------------------------------------------------
+
+                                    //dicomment dulu untuk infininx 24feb25
+//                                    if (checkPermission(menu_location_longlat.this)) {
+//                                        ContentValues cv = new ContentValues();
+//                                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                                            // ✅ ANDROID 10+ (Tanpa WRITE_EXTERNAL_STORAGE)
+//                                            cv.put(MediaStore.Images.Media.DISPLAY_NAME, "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                            cv.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+//                                            cv.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_PICTURES + "/MyAppFolder");
+//
+//                                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+//
+//                                            if (imageUri == null) {
+//                                                // Gagal dapat URI, coba pakai penyimpanan Private
+//                                                File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture_" + System.currentTimeMillis() + ".jpg");
+//                                                imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                            }
+//
+//                                        } else {
+//                                            // ✅ ANDROID 9 KE BAWAH (Pakai WRITE_EXTERNAL_STORAGE + FileProvider)
+//                                            File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture.jpg");
+//                                            imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+//                                        }
+//
+//                                        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+//                                        startActivityForResult(intent, 1);
+//                                    } else {
+//                                        Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+//                                    }
+
+
+                                    if (checkPermission(menu_location_longlat.this)) {
                                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                                        File imageFile = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "MyPicture_" + System.currentTimeMillis() + ".jpg");
+                                        imageUri = FileProvider.getUriForFile(menu_location_longlat.this, "com.project.bbt.provider", imageFile);
+
                                         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                                        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
                                         startActivityForResult(intent, 1);
-
                                     } else {
-
                                         Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
                                     }
 
@@ -519,7 +720,6 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
         requestQueue.add(stringRequest);
     }
 
-
     public boolean checkPermissionREAD_EXTERNAL_STORAGE(final Context context) {
         int currentAPIVersion = Build.VERSION.SDK_INT;
         if (currentAPIVersion >= android.os.Build.VERSION_CODES.M) {
@@ -544,7 +744,6 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
         } else {
             return true;
         }
-
     }
 
     public void showDialog(final String msg, final Context context, final String permission) {
@@ -636,26 +835,52 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 .show();
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                // Permission diberikan, muat ulang peta
+//                onMapReady(mMap);
+//            } else {
+//                Toast.makeText(this, "Izin lokasi diperlukan untuk menampilkan peta", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            // Handle izin lokasi
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission diberikan, muat ulang peta
                 onMapReady(mMap);
             } else {
                 Toast.makeText(this, "Izin lokasi diperlukan untuk menampilkan peta", Toast.LENGTH_SHORT).show();
             }
+
+        } else if (requestCode == MY_PERMISSIONS_REQUEST) {
+            // Handle izin Kamera & Storage
+            boolean cameraAccepted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+            boolean storageAccepted = grantResults.length > 1 && grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+            if (cameraAccepted && storageAccepted) {
+                Toast.makeText(this, "Izin kamera & penyimpanan diberikan!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Izin kamera atau penyimpanan ditolak!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-
     private void get_lokasi_karyawan() {
+        showCustomDialog();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index_lokasi_absen_karyawan?noUrut=" + string_no_urut_karyawan, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index_lokasi_absen_karyawan?noUrut=" + string_no_urut_karyawan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                hideCustomDialog();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -680,7 +905,9 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        hideCustomDialog();
                         Toast.makeText(menu_location_longlat.this, "Lokasi Tidak Ditemukan", Toast.LENGTH_SHORT).show();
+
 //                        Toast.makeText(menu_getin_getout.this, "TEST", Toast.LENGTH_SHORT).show();
 //                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -706,23 +933,23 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
 
     private void post_get_in() {
-        pDialog = new ProgressDialog(this);
-        pDialog.setContentView(R.layout.progress_dialog);
-        pDialog.getWindow().setBackgroundDrawableResource(
-                android.R.color.transparent
-        );
+//        pDialog = new ProgressDialog(this);
+//        pDialog.setContentView(R.layout.progress_dialog);
+//        pDialog.getWindow().setBackgroundDrawableResource(
+//                android.R.color.transparent
+//        );
 
-        showDialog();
+        showCustomDialog();
 
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/insert_absen_get_in",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/insert_absen_get_in",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
                         str_getin_or_getout = "0";
                         upload_foto_user();
+                        hideCustomDialog();
 
-                        hideDialog();
                         SweetAlertDialog Success = new SweetAlertDialog(menu_location_longlat.this, SweetAlertDialog.SUCCESS_TYPE);
                         Success.setContentText("Data Sudah Ditambahkan");
                         Success.setCancelable(false);
@@ -741,7 +968,8 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        hideDialog();
+                        hideCustomDialog();
+
                         Toast.makeText(getApplicationContext(), "Maaf Ada Kesalahan", Toast.LENGTH_LONG).show();
 
                         // Jika terjadi error
@@ -780,7 +1008,7 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 params.put("lat", tv_latitude.getText().toString());
                 params.put("userCreate", string_nip_karyawan);
                 params.put("userDateCreate", formattedDate);
-                params.put("url_foto", "http://36.88.110.134:27/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
+                params.put("url_foto", "https://ess.banktanah.id/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
 
                 return params;
             }
@@ -798,15 +1026,17 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
     }
 
     private void post_get_out() {
-        pDialog = new ProgressDialog(this);
-        pDialog.setContentView(R.layout.progress_dialog);
-        pDialog.getWindow().setBackgroundDrawableResource(
-                android.R.color.transparent
-        );
+//        pDialog = new ProgressDialog(this);
+//        pDialog.setContentView(R.layout.progress_dialog);
+//        pDialog.getWindow().setBackgroundDrawableResource(
+//                android.R.color.transparent
+//        );
+//
+//        showDialog();
 
-        showDialog();
+        showCustomDialog();
 
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/insert_absen_get_out",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/insert_absen_get_out",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -814,7 +1044,10 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                         str_getin_or_getout = "1";
                         upload_foto_user();
 
-                        hideDialog();
+//                      hideDialog();
+
+                        hideCustomDialog();
+
                         SweetAlertDialog Success = new SweetAlertDialog(menu_location_longlat.this, SweetAlertDialog.SUCCESS_TYPE);
                         Success.setContentText("Data Sudah Ditambahkan");
                         Success.setCancelable(false);
@@ -834,7 +1067,8 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        hideDialog();
+                        hideCustomDialog();
+
                         Toast.makeText(getApplicationContext(), "Maaf Ada Kesalahan", Toast.LENGTH_LONG).show();
 
                         // Jika terjadi error
@@ -873,7 +1107,7 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
                 params.put("lat", tv_latitude.getText().toString());
                 params.put("userCreate", string_nip_karyawan);
                 params.put("userDateCreate", formattedDate);
-                params.put("url_foto", "http://36.88.110.134:27/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
+                params.put("url_foto", "https://ess.banktanah.id/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
 
                 return params;
             }
@@ -952,7 +1186,7 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
 
     public void upload_foto_user() {
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_absen_user.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_absen_user.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1014,15 +1248,31 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
         requestQueue2.add(stringRequest2);
     }
 
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.setCancelable(false);
-        pDialog.show();
+//    private void showDialog() {
+//        if (!pDialog.isShowing())
+//            pDialog.setCancelable(false);
+//        pDialog.show();
+//    }
+//
+//    private void hideDialog() {
+//        if (pDialog.isShowing())
+//            pDialog.dismiss();
+//    }
+
+    private void showCustomDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.progress_dialog, null);
+        builder.setView(dialogView);
+        builder.setCancelable(false);
+        progressDialog = builder.create();
+        progressDialog.show();
     }
 
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
+    private void hideCustomDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 
     @Override
@@ -1048,5 +1298,134 @@ public class menu_location_longlat extends FragmentActivity implements OnMapRead
         super.onLowMemory();
         mapView.onLowMemory();
     }
+
+    //NEW CONFIG FOR CAMERA 7 FEB 25 -------------------------------------
+    // Cek izin CAMERA dan READ_EXTERNAL_STORAGE OLD
+    public boolean checkPermissions_old(final Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(
+                        (Activity) context,
+                        new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST
+                );
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+
+//    public boolean checkPermission(final Activity activity) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            List<String> permissions = new ArrayList<>();
+//
+//            // Permission buat akses kamera
+//            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//                permissions.add(Manifest.permission.CAMERA);
+//            }
+//
+//            // READ_EXTERNAL_STORAGE (dibutuhkan untuk ambil gambar dari storage)
+//            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+//            }
+//
+//            // WRITE_EXTERNAL_STORAGE (Cuma buat Android 9 ke bawah, API 28)
+//            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//                }
+//            }
+//
+//            // Untuk Android 14+ (API 34) gunakan READ_MEDIA_IMAGES
+//            if (Build.VERSION.SDK_INT >= 34) { // Android 14+
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+//                }
+//            }
+//
+//            // Kalau ada permission yang belum granted, request ke user
+//            if (!permissions.isEmpty()) {
+//                ActivityCompat.requestPermissions((Activity) activity, permissions.toArray(new String[0]), 100);
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    //di comment dulu untuk infinix
+//    public boolean checkPermission(final Activity activity) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            List<String> permissions = new ArrayList<>();
+//
+//            // Permission buat akses kamera
+//            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+//                permissions.add(Manifest.permission.CAMERA);
+//            }
+//
+//            if (Build.VERSION.SDK_INT >= 34) { // Android 14+ (API 34 ke atas)
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+//                }
+//            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13 (API 33)
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+//                }
+//            } else { // Android 12 ke bawah (API 32 ke bawah)
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+//                }
+//            }
+//
+//            // WRITE_EXTERNAL_STORAGE (Cuma buat Android 9 ke bawah, API 28)
+//            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+//                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                    permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+//                }
+//            }
+//
+//            // Kalau ada permission yang belum granted, request ke user
+//            if (!permissions.isEmpty()) {
+//                ActivityCompat.requestPermissions(activity, permissions.toArray(new String[0]), 100);
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
+    public boolean checkPermission(final Activity activity) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            List<String> permissions = new ArrayList<>();
+
+            // Cek izin kamera
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.CAMERA);
+            }
+
+            // Cek izin akses media di Android 13+ (API 33 ke atas)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) {
+                    permissions.add(Manifest.permission.READ_MEDIA_IMAGES);
+                }
+            } else {
+                // Android 12 ke bawah butuh izin READ_EXTERNAL_STORAGE
+                if (ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+                }
+            }
+
+            // Kalau ada permission yang belum granted, request ke user
+            if (!permissions.isEmpty()) {
+                ActivityCompat.requestPermissions(activity, permissions.toArray(new String[0]), 100);
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 

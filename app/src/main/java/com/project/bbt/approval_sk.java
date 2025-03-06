@@ -203,7 +203,7 @@ public class approval_sk extends AppCompatActivity {
     private void getSK() {
         String lokasi = menu.text_jabatan.getText().toString();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index_get_sk_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index_get_sk_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -273,7 +273,7 @@ public class approval_sk extends AppCompatActivity {
                                                                 android.R.color.transparent
                                                         );
 
-                                                        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index",
+                                                        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index",
                                                                 new Response.Listener<String>() {
                                                                     @Override
                                                                     public void onResponse(String response) {

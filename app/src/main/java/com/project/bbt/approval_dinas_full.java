@@ -222,7 +222,7 @@ public class approval_dinas_full extends AppCompatActivity {
         );
         System.out.println("hasil - " + menu.text_jabatan.getText().toString());
         movieItemList.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index_get_dinas_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index_get_dinas_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
 
                 new Response.Listener<String>() {
                     @Override

@@ -86,7 +86,7 @@ public class menu_covid extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String currentDateandTime = sdf.format(new Date());
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/assessment/index?nik_baru="+nik_baru+"&tanggal=" + currentDateandTime,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/assessment/index?nik_baru="+nik_baru+"&tanggal=" + currentDateandTime,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

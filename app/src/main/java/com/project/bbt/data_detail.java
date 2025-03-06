@@ -215,7 +215,7 @@ public class data_detail extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_detail_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_detail_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -380,7 +380,7 @@ public class data_detail extends AppCompatActivity {
         pDialog.setTitleText("Harap Menunggu");
         pDialog.setCancelable(false);
         pDialog.show();
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_detail_NoUrut",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_detail_NoUrut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

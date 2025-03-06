@@ -108,7 +108,7 @@ public class detail_activity extends AppCompatActivity {
                             android.R.color.transparent
                     );
 
-                    StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/indexupdate",
+                    StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/indexupdate",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -172,7 +172,7 @@ public class detail_activity extends AppCompatActivity {
                         android.R.color.transparent
                 );
 
-                StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/hapusupdate.php",
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/hapusupdate.php",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -240,7 +240,7 @@ public class detail_activity extends AppCompatActivity {
 
         String id = getIntent().getStringExtra(LoginItem.KEY_NIK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_id?id=" + id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_id?id=" + id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -275,7 +275,7 @@ public class detail_activity extends AppCompatActivity {
                                         pDialog.getWindow().setBackgroundDrawableResource(
                                                 android.R.color.transparent
                                         );
-                                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_real",
+                                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_real",
                                                 new Response.Listener<String>() {
                                                     @Override
                                                     public void onResponse(String response) {
@@ -362,7 +362,7 @@ public class detail_activity extends AppCompatActivity {
     }
 
     private void hapuusdata() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/hapusupdate.php",
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/hapusupdate.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

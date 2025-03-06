@@ -205,7 +205,7 @@ public class list_tmp_refund extends AppCompatActivity {
                 pDialog.getWindow().setBackgroundDrawableResource(
                         android.R.color.transparent
                 );
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/refund/index_nomor", null,
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/refund/index_nomor", null,
                         new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
@@ -282,7 +282,7 @@ public class list_tmp_refund extends AppCompatActivity {
                 e.printStackTrace();
             }
             final int finalI = i;
-            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/refund/index_refund",
+            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/refund/index_refund",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -359,7 +359,7 @@ public class list_tmp_refund extends AppCompatActivity {
                 e.printStackTrace();
             }
             final int finalI = i;
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/uploadrefund.php",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/uploadrefund.php",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

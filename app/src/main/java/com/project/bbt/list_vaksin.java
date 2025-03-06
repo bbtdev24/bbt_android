@@ -122,7 +122,7 @@ public class list_vaksin extends AppCompatActivity {
         );
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK ,null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/vaksin/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/vaksin/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -347,7 +347,7 @@ public class list_vaksin extends AppCompatActivity {
 
             vaksin_pojo movieItem = vaksin_pojos.get(position);
             vaksin.setText("Vaksin " + movieItem.getType());
-//            String url = "http://36.88.110.134:27/bbt_api/rest_server/image/upload_vaksin/" + movieItem.getDokumen();
+//            String url = "https://ess.banktanah.id/bbt_api/rest_server/image/upload_vaksin/" + movieItem.getDokumen();
 //
 //            Glide.with(list_vaksin.this)
 //                    .load(url)
@@ -363,7 +363,7 @@ public class list_vaksin extends AppCompatActivity {
             String credentials = username + ":" + password;
             String auth = "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
 
-            String url = "http://36.88.110.134:27/bbt_api/rest_server/image/upload_vaksin/" + movieItem.getDokumen();
+            String url = "https://ess.banktanah.id/bbt_api/rest_server/image/upload_vaksin/" + movieItem.getDokumen();
 
             // Tambahkan header Authorization dengan Basic Authentication
             GlideUrl glideUrl = new GlideUrl(url, new LazyHeaders.Builder()

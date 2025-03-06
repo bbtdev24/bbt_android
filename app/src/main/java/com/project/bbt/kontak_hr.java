@@ -92,7 +92,7 @@ public class kontak_hr extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_kontak_hrd",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_kontak_hrd",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

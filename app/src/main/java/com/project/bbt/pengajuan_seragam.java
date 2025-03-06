@@ -153,7 +153,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
                     karyawan = splited_text[1];
                     karyawan = karyawan.replace(")", "");
                     System.out.println("hasil =" + karyawan);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?nik_baru=" + karyawan,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?nik_baru=" + karyawan,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -236,7 +236,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
                     String[] splited_text = seragam.split(" \\(");
                     seragam = splited_text[0];
                     System.out.println("hasil =" + seragam);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/seragam/index?id_seragam=" + seragam,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/seragam/index?id_seragam=" + seragam,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -303,7 +303,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
     }
 
     private void kodejab() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -447,7 +447,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -493,7 +493,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
     }
 
     private void postseragam() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengajuan_seragam/index",
                 new Response.Listener<String>() {
 
                     @Override
@@ -581,7 +581,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
     }
 
     private void getSeragam() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/seragam/index", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/seragam/index", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -634,7 +634,7 @@ public class pengajuan_seragam extends AppCompatActivity implements RadioGroup.O
 
     private void getLokasi(){
         String lokasi = txt_lokasi.getText().toString();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

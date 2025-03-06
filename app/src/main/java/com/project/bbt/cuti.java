@@ -271,7 +271,7 @@ public class cuti extends AppCompatActivity {
         final int year = Calendar.getInstance().get(Calendar.YEAR ) -1;
         System.out.println("Test :" + year);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/cuti/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/cuti/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -338,7 +338,7 @@ public class cuti extends AppCompatActivity {
     private void gettanggaljoin() {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK ,null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -452,7 +452,7 @@ public class cuti extends AppCompatActivity {
         );
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK ,null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

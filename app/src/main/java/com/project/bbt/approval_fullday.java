@@ -223,7 +223,7 @@ public class approval_fullday extends AppCompatActivity {
                 android.R.color.transparent
         );
         movieItemList.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_get_full_day_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_get_full_day_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
                 new Response.Listener<String>() {
 
                     @Override

@@ -673,7 +673,7 @@ public class sakit extends AppCompatActivity {
     private void getLokasi() {
 
         String lokasi = izin.txt_jabatan.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Karyawan.add("PILIH PEGAWAI");
@@ -702,7 +702,8 @@ public class sakit extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(sakit.this, "Terjadi Kesalahan saat memuat data", Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override
@@ -732,7 +733,7 @@ public class sakit extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_last_nomor_pengajuan", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_last_nomor_pengajuan", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -783,7 +784,7 @@ public class sakit extends AppCompatActivity {
 
     //OK--
     private void image() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_izin.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_izin.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -861,7 +862,7 @@ public class sakit extends AppCompatActivity {
 
     //OK--
     private void postfullfirst() {
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_izin_full_day",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_izin_full_day",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -970,7 +971,7 @@ public class sakit extends AppCompatActivity {
         for (int i = 0; i < editTextList.size(); i++) {
 
             final String tanggal = editTextList.get(i).getText().toString();
-            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_izin_full_day",
+            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_izin_full_day",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1054,7 +1055,7 @@ public class sakit extends AppCompatActivity {
     }
 
     private void postNotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1081,7 +1082,7 @@ public class sakit extends AppCompatActivity {
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://203.100.57.36/project/ess-api-android-bt/rest_server/Push_Notification/push_notif_v1.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

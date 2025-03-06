@@ -267,7 +267,7 @@ public class izinnonfullday extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_non_full_day", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_non_full_day", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -322,7 +322,7 @@ public class izinnonfullday extends AppCompatActivity {
     }
 
     private void postNonfull() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index",
                 new Response.Listener<String>() {
 
                     @Override
@@ -401,7 +401,7 @@ public class izinnonfullday extends AppCompatActivity {
     }
 
     private void postNotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan="+txt_nomor.getText().toString()+"&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan="+txt_nomor.getText().toString()+"&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -427,7 +427,7 @@ public class izinnonfullday extends AppCompatActivity {
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

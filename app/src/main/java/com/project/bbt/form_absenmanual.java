@@ -117,7 +117,7 @@ public class form_absenmanual extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -194,7 +194,7 @@ public class form_absenmanual extends AppCompatActivity {
     }
 
     private void updatejamout() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index_manualout",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index_manualout",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -247,7 +247,7 @@ public class form_absenmanual extends AppCompatActivity {
     }
 
     private void updatejamin() {
-            StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index_manualin",
+            StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index_manualin",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -389,7 +389,7 @@ public class form_absenmanual extends AppCompatActivity {
 
     private void getData() {
         final String idkaryawan = getIntent().getStringExtra(LoginItem.KEY_NIK);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index?id_absen=" + idkaryawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index?id_absen=" + idkaryawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -457,7 +457,7 @@ public class form_absenmanual extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + nikbaru.getText().toString() + "&shift_day=" + tanggalabsen.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + nikbaru.getText().toString() + "&shift_day=" + tanggalabsen.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -508,7 +508,7 @@ public class form_absenmanual extends AppCompatActivity {
     }
 
     private void getName() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nikbaru.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nikbaru.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

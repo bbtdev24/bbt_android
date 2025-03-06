@@ -292,7 +292,7 @@ public class tabel_cuti_khusus extends AppCompatActivity {
 
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index?nik_baru=" + nik_baru ,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index?nik_baru=" + nik_baru ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

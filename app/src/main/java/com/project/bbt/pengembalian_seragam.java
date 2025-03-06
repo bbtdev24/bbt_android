@@ -166,7 +166,7 @@ public class pengembalian_seragam extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, qty);
         listqty.setAdapter(adapter2);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/seragam/index", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/seragam/index", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -217,7 +217,7 @@ public class pengembalian_seragam extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
             String lokasi = menu.txt_lokasi.getText().toString();
-            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
+            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     try {
@@ -308,7 +308,7 @@ public class pengembalian_seragam extends AppCompatActivity {
                     karyawan = splited_text[1];
                     karyawan = karyawan.replace(")", "");
                     System.out.println("hasil =" + karyawan);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -382,7 +382,7 @@ public class pengembalian_seragam extends AppCompatActivity {
                     String[] splited_text = seragam.split(" \\(");
                     seragam = splited_text[0];
                     System.out.println("hasil =" + seragam);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/seragam/index?id_seragam=" + seragam,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/seragam/index?id_seragam=" + seragam,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -539,7 +539,7 @@ public class pengembalian_seragam extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent);
 
-        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index", null,
+        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -596,7 +596,7 @@ public class pengembalian_seragam extends AppCompatActivity {
     }
 
     private void postpengembalianseragam() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index",
                 new Response.Listener<String>() {
 
                     @Override
@@ -675,7 +675,7 @@ public class pengembalian_seragam extends AppCompatActivity {
 
 
     private void kodejab() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -298,7 +298,7 @@ public class cutikhusus extends AppCompatActivity {
 
     private void getKeterangan() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index_keterangan", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index_keterangan", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -523,7 +523,7 @@ public class cutikhusus extends AppCompatActivity {
     }
 
     private void getNo() {
-        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_khusus", null,
+        JsonObjectRequest stringRequest1 = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_cuti_khusus", null,
                 new Response.Listener<JSONObject>() {
                     @SuppressLint("DefaultLocale")
                     @Override
@@ -587,7 +587,7 @@ public class cutikhusus extends AppCompatActivity {
 
 
     private void image() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_cuti_khusus.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_cuti_khusus.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -676,7 +676,7 @@ public class cutikhusus extends AppCompatActivity {
             System.out.println("Tanggal = " + tanggal);
 
             final int finalI = i;
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -755,7 +755,7 @@ public class cutikhusus extends AppCompatActivity {
     }
 
     private void postnotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -778,9 +778,9 @@ public class cutikhusus extends AppCompatActivity {
                     }
 
                     private void postNotifikasi(String device_token) {
-//                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
+//                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
 
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://203.100.57.36/project/ess-api-android-bt/rest_server/Push_Notification/push_notif_v1.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

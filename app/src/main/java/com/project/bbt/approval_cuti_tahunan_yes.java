@@ -56,7 +56,7 @@ public class approval_cuti_tahunan_yes extends AppCompatActivity {
     private void approvedinas() {
         String id = text_jabatan.getText().toString();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

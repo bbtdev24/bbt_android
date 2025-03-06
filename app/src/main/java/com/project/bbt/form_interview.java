@@ -363,7 +363,7 @@ public class form_interview extends AppCompatActivity implements RadioGroup.OnCh
                                 noktp.setText(ktp);
                                 tanggaledit.setText(tanggal);
 
-                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
+                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -410,7 +410,7 @@ public class form_interview extends AppCompatActivity implements RadioGroup.OnCh
                                 requestQueue.add(stringRequest2);
 
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama1.getText().toString(),
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama1.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -456,7 +456,7 @@ public class form_interview extends AppCompatActivity implements RadioGroup.OnCh
                                 RequestQueue requestQueue3 = Volley.newRequestQueue(form_interview.this);
                                 requestQueue3.add(stringRequest);
 
-                                StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama2.getText().toString(),
+                                StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama2.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -502,7 +502,7 @@ public class form_interview extends AppCompatActivity implements RadioGroup.OnCh
                                 RequestQueue requestQueue2 = Volley.newRequestQueue(form_interview.this);
                                 requestQueue2.add(stringRequest7);
 
-                                StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama3.getText().toString(),
+                                StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama3.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -547,7 +547,7 @@ public class form_interview extends AppCompatActivity implements RadioGroup.OnCh
                                 RequestQueue requestQueue9 = Volley.newRequestQueue(form_interview.this);
                                 requestQueue9.add(stringRequest3);
 
-                                StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
+                                StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {

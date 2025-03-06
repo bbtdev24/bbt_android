@@ -481,7 +481,7 @@ public class dinasfullday extends AppCompatActivity {
     private void getLokasi() {
         String lokasi = dinas.txt_jabatan2.getText().toString();
         System.out.println("Test =" + lokasi);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_get_all_karyawan?lokasi_struktur=" + string_lokasi_karyawan,
                 new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -538,7 +538,7 @@ public class dinasfullday extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/nomor_pengajuan/index_last_nomor_pengajuan", null,
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/nomor_pengajuan/index_last_nomor_pengajuan", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -589,7 +589,7 @@ public class dinasfullday extends AppCompatActivity {
     }
 
     private void postfullfirst() {
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_dinas_full_day",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_dinas_full_day",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -687,7 +687,7 @@ public class dinasfullday extends AppCompatActivity {
 
         for (int i = 0; i < editTextList.size(); i++) {
             final String tanggal = editTextList.get(i).getText().toString();
-            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_dinas_full_day",
+            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_insert_dinas_full_day",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -767,7 +767,7 @@ public class dinasfullday extends AppCompatActivity {
     }
 
     private void postNotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + string_id_jabatan + "&lokasi_hrd=" + string_id_lokasi + "&idDivisi=" + string_id_divisi + "&idBagian=" + string_id_bagian,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -790,7 +790,7 @@ public class dinasfullday extends AppCompatActivity {
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://203.100.57.36/project/ess-api-android-bt/rest_server/Push_Notification/push_notif_v1.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

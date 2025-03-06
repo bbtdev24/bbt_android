@@ -210,7 +210,7 @@ public class approval_nonfull extends AppCompatActivity {
                 android.R.color.transparent
         );
         movieItemList2.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + text_jabatan.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

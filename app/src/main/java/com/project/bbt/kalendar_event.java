@@ -131,7 +131,7 @@ public class kalendar_event extends AppCompatActivity {
             public void onMonthChanged(MaterialCalendarView widget, final CalendarDay date) {
                 event.clear();
                 tanggal2.setText("Belum ada Event");
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index",
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -245,7 +245,7 @@ public class kalendar_event extends AppCompatActivity {
                 DateFormat df2 = new SimpleDateFormat("yyyy-MM-dd");
                 String tanggal_awal = df2.format(date.getDate());
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index?birth_date=" + tanggal_awal,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index?birth_date=" + tanggal_awal,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -298,7 +298,7 @@ public class kalendar_event extends AppCompatActivity {
 
     private void getEvents() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -366,7 +366,7 @@ public class kalendar_event extends AppCompatActivity {
                                         final String tanggal = ((eventmodel) parent.getItemAtPosition(position)).getBirth_date();
 
                                         System.out.println("Test :" + tanggal);
-                                        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index?birth_date=" + tanggal,
+                                        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index?birth_date=" + tanggal,
                                                 new Response.Listener<String>() {
                                                     @Override
                                                     public void onResponse(String response) {
@@ -588,7 +588,7 @@ public class kalendar_event extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String formattedDate = df.format(c);
         System.out.println("Current time => " + formattedDate);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index?birth_date=" + formattedDate,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index?birth_date=" + formattedDate,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -640,7 +640,7 @@ public class kalendar_event extends AppCompatActivity {
 
         final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/event/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/event/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

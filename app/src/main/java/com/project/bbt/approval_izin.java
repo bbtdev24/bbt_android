@@ -99,7 +99,7 @@ public class approval_izin extends AppCompatActivity {
         );
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -183,7 +183,7 @@ public class approval_izin extends AppCompatActivity {
     private void getDetail2() {
         String lokasi = text_jabatan.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

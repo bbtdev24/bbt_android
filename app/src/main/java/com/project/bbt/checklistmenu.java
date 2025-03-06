@@ -190,7 +190,7 @@ public class checklistmenu extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -249,7 +249,7 @@ public class checklistmenu extends AppCompatActivity {
         );
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -262,7 +262,7 @@ public class checklistmenu extends AppCompatActivity {
                                 JSONObject movieObject = movieArray.getJSONObject(i);
                                 nojab.setText(movieObject.getString("jabatan_struktur"));
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangan?jabatan=" + movieObject.getString("jabatan_struktur") ,
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangan?jabatan=" + movieObject.getString("jabatan_struktur") ,
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -396,7 +396,7 @@ public class checklistmenu extends AppCompatActivity {
 
             sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
             String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangannik?nik_baru=" + nik_baru + "&id=" + movieItem.getId() ,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangannik?nik_baru=" + nik_baru + "&id=" + movieItem.getId() ,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

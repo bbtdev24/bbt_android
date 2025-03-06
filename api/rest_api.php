@@ -1,5 +1,5 @@
 <?php
-$url	= "http://36.88.110.134:27/bbt_api/rest_server/api/login/?password";
+$url	= "https://ess.banktanah.id/bbt_api/rest_server/api/login/?password";
 
 $_POST['nik']	= urlencode($_POST['nik']);
 $url 		.= "nik_baru=".$_POST['nik'];

@@ -230,7 +230,7 @@ public class form_nonfull extends AppCompatActivity implements RadioGroup.OnChec
     private void approval() {
         final String idkaryawan = getIntent().getStringExtra(LoginItem.KEY_NIK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index?id_non_full=" + idkaryawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index?id_non_full=" + idkaryawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -320,7 +320,7 @@ public class form_nonfull extends AppCompatActivity implements RadioGroup.OnChec
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -398,7 +398,7 @@ public class form_nonfull extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void postnotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token_nik?nik_baru=" + nikbaru.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token_nik?nik_baru=" + nikbaru.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -426,7 +426,7 @@ public class form_nonfull extends AppCompatActivity implements RadioGroup.OnChec
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

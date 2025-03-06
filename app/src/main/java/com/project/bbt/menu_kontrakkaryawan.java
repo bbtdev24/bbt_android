@@ -239,7 +239,7 @@ public class menu_kontrakkaryawan extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Surat_Kontrak/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Surat_Kontrak/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -52,7 +52,7 @@ public class approval_dinas_nonfull_yes extends AppCompatActivity {
     private void approvedinas() {
         String jabatan = text_jabatan.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + jabatan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

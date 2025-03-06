@@ -136,7 +136,7 @@ public class manu_profil extends AppCompatActivity {
     }
 
     private void logoutFireBase() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_logout",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_logout",
                 new Response.Listener<String>() {
 
                     @Override

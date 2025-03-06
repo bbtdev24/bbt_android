@@ -124,7 +124,7 @@ public class listactivity extends AppCompatActivity {
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
         final String ids = getIntent().getStringExtra(LoginItem.KEY_NIK);
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangannik?nik_baru=" + nik_baru + "&id=" + ids,
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangannik?nik_baru=" + nik_baru + "&id=" + ids,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -273,7 +273,7 @@ public class listactivity extends AppCompatActivity {
         });
         final String id = getIntent().getStringExtra(LoginItem.KEY_NIK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangan?id=" + id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index_getketerangan?id=" + id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -460,7 +460,7 @@ public class listactivity extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/uploadlog.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/uploadlog.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -511,7 +511,7 @@ public class listactivity extends AppCompatActivity {
     }
 
     private void logpost() {
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Logactivity/index",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Logactivity/index",
                 new Response.Listener<String>() {
                     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override

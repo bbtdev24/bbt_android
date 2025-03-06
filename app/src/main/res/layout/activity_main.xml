@@ -47,11 +47,11 @@
                                 <ImageView
                                     android:id="@+id/icon"
                                     android:layout_width="200dp"
-                                    android:layout_height="100dp"
+                                    android:layout_height="80dp"
                                     android:layout_centerHorizontal="true"
                                     android:layout_marginTop="38dp"
                                     android:layout_marginBottom="8dp"
-                                    android:background="@drawable/logo_ess"
+                                    android:background="@drawable/logo_bt_vector"
                                     android:scaleType="fitCenter" />
 
                             </LinearLayout>
@@ -115,7 +115,7 @@
                                 android:drawableLeft="@drawable/ic_user"
                                 android:drawablePadding="16dp"
                                 android:fontFamily="@font/opensansmedium"
-                                android:hint="NIK Karyawan"
+                                android:hint="NIP Pegawai"
                                 android:singleLine="true"
                                 android:textSize="16dp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -200,7 +200,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/opensansmedium"
-                        android:text="Mobile ESS © 2024 Bank Tanah"
+                        android:text="Mobile ESS © 2025 Bank Tanah"
                         android:textSize="10sp" />
                 </LinearLayout>
 

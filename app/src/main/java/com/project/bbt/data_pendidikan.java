@@ -393,13 +393,13 @@ public class data_pendidikan extends AppCompatActivity {
                             pDialog.show();
 
                             if(tingkatan.getText().toString().equals("Diploma")){
-                                URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
+                                URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
                             } else if(tingkatan.getText().toString().equals("S1")){
-                                URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
+                                URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
                             } else if(tingkatan.getText().toString().equals("S2")){
-                                URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
+                                URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
                             } else if(tingkatan.getText().toString().equals("S3")){
-                                URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
+                                URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
                             }
 
                             StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
@@ -567,7 +567,7 @@ public class data_pendidikan extends AppCompatActivity {
                 pDialog.setCancelable(false);
                 pDialog.show();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma_NoUrut",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma_NoUrut",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -654,7 +654,7 @@ public class data_pendidikan extends AppCompatActivity {
                 pDialog.setCancelable(false);
                 pDialog.show();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -740,7 +740,7 @@ public class data_pendidikan extends AppCompatActivity {
                 pDialog.setCancelable(false);
                 pDialog.show();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -827,7 +827,7 @@ public class data_pendidikan extends AppCompatActivity {
                 pDialog.setCancelable(false);
                 pDialog.show();
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -979,7 +979,7 @@ public class data_pendidikan extends AppCompatActivity {
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
         pendidikan.clear();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1145,13 +1145,13 @@ public class data_pendidikan extends AppCompatActivity {
                                                         pDialog.show();
 
                                                         if(tingkatan.getText().toString().equals("Diploma")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
                                                         } else if(tingkatan.getText().toString().equals("S1")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S2")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S3")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
                                                         }
 
                                                         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
@@ -1411,13 +1411,13 @@ public class data_pendidikan extends AppCompatActivity {
                                                         pDialog.show();
 
                                                         if(tingkatan.getText().toString().equals("Diploma")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
                                                         } else if(tingkatan.getText().toString().equals("S1")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S2")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S3")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
                                                         }
 
                                                         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
@@ -1677,13 +1677,13 @@ public class data_pendidikan extends AppCompatActivity {
                                                         pDialog.show();
 
                                                         if(tingkatan.getText().toString().equals("Diploma")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
                                                         } else if(tingkatan.getText().toString().equals("S1")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S2")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S3")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
                                                         }
 
                                                         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
@@ -1943,13 +1943,13 @@ public class data_pendidikan extends AppCompatActivity {
                                                         pDialog.show();
 
                                                         if(tingkatan.getText().toString().equals("Diploma")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_diploma";
                                                         } else if(tingkatan.getText().toString().equals("S1")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s1_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S2")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s2_NoUrut";
                                                         } else if(tingkatan.getText().toString().equals("S3")){
-                                                            URL = "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
+                                                            URL = "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_s3_NoUrut";
                                                         }
 
                                                         StringRequest stringRequest = new StringRequest(Request.Method.PUT, URL,
@@ -2274,7 +2274,7 @@ public class data_pendidikan extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -2380,7 +2380,7 @@ public class data_pendidikan extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_pendidikan_awal_NoUrut",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_pendidikan_awal_NoUrut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

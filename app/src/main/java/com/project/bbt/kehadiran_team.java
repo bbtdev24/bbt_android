@@ -308,7 +308,7 @@ public class kehadiran_team extends AppCompatActivity {
         String nik_baru = getIntent().getStringExtra(LoginItem.KEY_NIK);
         System.out.println("hasil =" + nik_baru);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -364,7 +364,7 @@ public class kehadiran_team extends AppCompatActivity {
                 android.R.color.transparent
         );
         String nik_baru = getIntent().getStringExtra(LoginItem.KEY_NIK);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index?shift_day="+ convertFormat2(tanggalawal.getText().toString()) +"&shift_day_2=" + convertFormat2(tanggalakhir.getText().toString()) + "&badgenumber=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index?shift_day="+ convertFormat2(tanggalawal.getText().toString()) +"&shift_day_2=" + convertFormat2(tanggalakhir.getText().toString()) + "&badgenumber=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -532,7 +532,7 @@ public class form_interview_update extends AppCompatActivity implements RadioGro
                                 noktp.setText(ktp);
                                 tanggaledit.setText(convertFormat(tanggal));
 
-                                StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
+                                StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ position.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -578,7 +578,7 @@ public class form_interview_update extends AppCompatActivity implements RadioGro
                                 RequestQueue requestQueue5 = Volley.newRequestQueue(form_interview_update.this);
                                 requestQueue5.add(stringRequest5);
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama1.getText().toString(),
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama1.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -624,7 +624,7 @@ public class form_interview_update extends AppCompatActivity implements RadioGro
                                 RequestQueue requestQueue = Volley.newRequestQueue(form_interview_update.this);
                                 requestQueue.add(stringRequest);
 
-                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama2.getText().toString(),
+                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama2.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -670,7 +670,7 @@ public class form_interview_update extends AppCompatActivity implements RadioGro
                                 RequestQueue requestQueue2 = Volley.newRequestQueue(form_interview_update.this);
                                 requestQueue2.add(stringRequest2);
 
-                                StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama3.getText().toString(),
+                                StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nama3.getText().toString(),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {

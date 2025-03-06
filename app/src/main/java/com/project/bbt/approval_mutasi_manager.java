@@ -123,11 +123,11 @@ public class approval_mutasi_manager extends AppCompatActivity {
                 },1500);
 
                 if(status.getSelectedItem().toString().equals("Open")){
-                    cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                    cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                 } else if(status.getSelectedItem().toString().equals("Approved")){
-                    cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                    cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                 } else  if(status.getSelectedItem().toString().equals("Not Approved")){
-                    cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                    cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                 }
             }
         });
@@ -226,11 +226,11 @@ public class approval_mutasi_manager extends AppCompatActivity {
                             tanggal2 = convertFormat2(sampai_tanggal.getText().toString());
 
                             if(status.getSelectedItem().toString().equals("Open")){
-                                cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                                cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                             } else if(status.getSelectedItem().toString().equals("Approved")){
-                                cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                                cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                             } else  if(status.getSelectedItem().toString().equals("Not Approved")){
-                                cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+                                cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
                             }
                         }
                     }
@@ -461,11 +461,11 @@ public class approval_mutasi_manager extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(status.getSelectedItem().toString().equals("Open")){
-            cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+            cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=0&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
         } else if(status.getSelectedItem().toString().equals("Approved")){
-            cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+            cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=1&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
         } else  if(status.getSelectedItem().toString().equals("Not Approved")){
-            cekdata("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
+            cekdata("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager?kondisi=2&" + "date1=" + tanggal1 + "&date2=" +tanggal2);
         }
     }
 

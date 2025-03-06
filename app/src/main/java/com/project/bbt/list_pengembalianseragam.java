@@ -104,7 +104,7 @@ public class list_pengembalianseragam extends AppCompatActivity {
         movieItemList.clear();
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index?nik_pengajuan=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Pengembalian_seragam/index?nik_pengajuan=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -253,7 +253,7 @@ public class list_pengembalianseragam extends AppCompatActivity {
 
             countprice.setText(String.valueOf(total));
 
-            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/seragam/index?id_seragam=" + movieItem.getId_seragam(),
+            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/seragam/index?id_seragam=" + movieItem.getId_seragam(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -303,7 +303,7 @@ public class list_pengembalianseragam extends AppCompatActivity {
             requestQueue2.add(stringRequest2);
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

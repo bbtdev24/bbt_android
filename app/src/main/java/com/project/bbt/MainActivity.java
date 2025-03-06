@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
             String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
             //JIKA BERHASIL LOGIN
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
                                     hideLoadingDialog();
                                 }
-
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                     pDialog.setContentView(R.layout.progress_dialog);
                     pDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent
                     );
-                    StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + result.getContents(),
+                    StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + result.getContents(),
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -222,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
         showLoadingDialog();
         
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + editTextnik_baru.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + editTextnik_baru.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -256,7 +255,6 @@ public class MainActivity extends AppCompatActivity {
                                 hideLoadingDialog();
                                 Toast.makeText(MainActivity.this, "NIK Tidak sesuai", Toast.LENGTH_SHORT).show();
                             }
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -294,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
 
         showLoadingDialog();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + editTextnik_baru.getText().toString(),                new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + editTextnik_baru.getText().toString(),                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {

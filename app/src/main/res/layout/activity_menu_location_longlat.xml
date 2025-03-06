@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="8dp"
-                android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2024"
+                android:text="Jadwal Shift : 08:00 - 17:00, 21 Sep 2025"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:visibility="gone" />
@@ -191,6 +191,23 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:text="Lokasi :"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tv_near_location"
+                        android:text="-"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
 
                 </LinearLayout>
 

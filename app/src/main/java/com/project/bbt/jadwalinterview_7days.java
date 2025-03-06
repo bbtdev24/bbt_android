@@ -394,7 +394,7 @@ public class jadwalinterview_7days extends AppCompatActivity {
             jam_interview2.setText(movieItem.getJam_interview());
             lokasi_interview2.setText(movieItem.getLokasi_interview());
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ posisi2.getText().toString(),
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan="+ posisi2.getText().toString(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

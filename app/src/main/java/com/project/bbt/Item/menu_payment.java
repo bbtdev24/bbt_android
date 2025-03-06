@@ -51,12 +51,12 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
-import com.itextpdf.text.Document;
-import com.itextpdf.text.FontFactory;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+//import com.itextpdf.text.Document;
+//import com.itextpdf.text.FontFactory;
+//import com.itextpdf.text.Paragraph;
+//import com.itextpdf.text.Phrase;
+//import com.itextpdf.text.pdf.PdfPTable;
+//import com.itextpdf.text.pdf.PdfWriter;
 import com.project.bbt.MainActivity;
 import com.project.bbt.NukeSSLCerts;
 import com.project.bbt.R;
@@ -305,7 +305,7 @@ public class menu_payment extends AppCompatActivity {
     }
 
     private void fetchPaymentData(String string_no_urut_karyawan, String selectedBulan, String selectedTahun) {
-        String url = "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index_get_payment?bulan_start=" + selectedBulan + "&bulan_end=" + selectedBulan + "&tahun=" + selectedTahun + "&noUrut=" + string_no_urut_karyawan;  // Ganti dengan URL API
+        String url = "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index_get_payment?bulan_start=" + selectedBulan + "&bulan_end=" + selectedBulan + "&tahun=" + selectedTahun + "&noUrut=" + string_no_urut_karyawan;  // Ganti dengan URL API
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 response -> {
@@ -605,74 +605,74 @@ public class menu_payment extends AppCompatActivity {
     }
 
 
-    private void generatePdf() {
-        Document document = new Document();
-        String filePath = getExternalFilesDir(null) + "/PaymentData.pdf";
-
-        try {
-            PdfWriter.getInstance(document, new FileOutputStream(filePath));
-            document.open();
-
-            // Menambahkan Judul
-            document.add(new Paragraph("Data Payment", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
-            document.add(new Paragraph(" ")); // Tambahkan jarak
-
-            // Membuat tabel untuk data
-            for (PaymentModel payment : paymentList) {
-                PdfPTable table = new PdfPTable(2);
-                table.setWidthPercentage(100);
-                table.setSpacingBefore(10f);
-                table.setSpacingAfter(10f);
-                table.getDefaultCell().setBorder(0);
-
-                // Menambahkan data ke dalam tabel
-                table.addCell(new Phrase("Nama Karyawan:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table.addCell(new Phrase(payment.getNamaKaryawan(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                table.addCell(new Phrase("Jabatan:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table.addCell(new Phrase(payment.getJabatan(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                table.addCell(new Phrase("Divisi:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table.addCell(new Phrase(payment.getDivisi(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                // Tambahkan tabel pertama ke dokumen
-                document.add(table);
-
-                // Menambahkan jarak sebelum bagian Gaji Pokok
-                document.add(new Paragraph(" ")); // Tambahkan baris kosong sebagai jarak
-                document.add(new Paragraph(" ")); // Tambahkan baris kosong kedua jika ingin lebih besar jaraknya
-
-                //Membuat tabel baru untuk data berikutnya
-                PdfPTable table2 = new PdfPTable(2);
-                table2.setWidthPercentage(100);
-                table2.getDefaultCell().setBorder(0);
-
-                table2.addCell(new Phrase("Gaji Pokok:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getGajiPokok()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                table2.addCell(new Phrase("THP:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getThp()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                table2.addCell(new Phrase("Tax:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
-                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getTax()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
-
-                // Tambahkan tabel kedua ke dokumen
-                document.add(table2);
-
-                document.close(); // Menutup dokumen
-
-                // Menampilkan dialog setelah PDF berhasil dibuat
-                showPdfDialog(filePath);
-            }
-
-            document.close(); // Menutup dokumen
-            Toast.makeText(this, "PDF Created Successfully at " + filePath, Toast.LENGTH_LONG).show();
-        } catch (Exception e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Failed to create PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            Log.e("PDFCreationError", "Failed to create PDF: " + e.getMessage(), e);
-        }
-    }
+//    private void generatePdf() {
+//        Document document = new Document();
+//        String filePath = getExternalFilesDir(null) + "/PaymentData.pdf";
+//
+//        try {
+//            PdfWriter.getInstance(document, new FileOutputStream(filePath));
+//            document.open();
+//
+//            // Menambahkan Judul
+//            document.add(new Paragraph("Data Payment", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 18)));
+//            document.add(new Paragraph(" ")); // Tambahkan jarak
+//
+//            // Membuat tabel untuk data
+//            for (PaymentModel payment : paymentList) {
+//                PdfPTable table = new PdfPTable(2);
+//                table.setWidthPercentage(100);
+//                table.setSpacingBefore(10f);
+//                table.setSpacingAfter(10f);
+//                table.getDefaultCell().setBorder(0);
+//
+//                // Menambahkan data ke dalam tabel
+//                table.addCell(new Phrase("Nama Karyawan:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table.addCell(new Phrase(payment.getNamaKaryawan(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                table.addCell(new Phrase("Jabatan:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table.addCell(new Phrase(payment.getJabatan(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                table.addCell(new Phrase("Divisi:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table.addCell(new Phrase(payment.getDivisi(), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                // Tambahkan tabel pertama ke dokumen
+//                document.add(table);
+//
+//                // Menambahkan jarak sebelum bagian Gaji Pokok
+//                document.add(new Paragraph(" ")); // Tambahkan baris kosong sebagai jarak
+//                document.add(new Paragraph(" ")); // Tambahkan baris kosong kedua jika ingin lebih besar jaraknya
+//
+//                //Membuat tabel baru untuk data berikutnya
+//                PdfPTable table2 = new PdfPTable(2);
+//                table2.setWidthPercentage(100);
+//                table2.getDefaultCell().setBorder(0);
+//
+//                table2.addCell(new Phrase("Gaji Pokok:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getGajiPokok()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                table2.addCell(new Phrase("THP:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getThp()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                table2.addCell(new Phrase("Tax:", FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//                table2.addCell(new Phrase("Rp " + formatCurrency(payment.getTax()), FontFactory.getFont(FontFactory.HELVETICA, 12)));
+//
+//                // Tambahkan tabel kedua ke dokumen
+//                document.add(table2);
+//
+//                document.close(); // Menutup dokumen
+//
+//                // Menampilkan dialog setelah PDF berhasil dibuat
+//                showPdfDialog(filePath);
+//            }
+//
+//            document.close(); // Menutup dokumen
+//            Toast.makeText(this, "PDF Created Successfully at " + filePath, Toast.LENGTH_LONG).show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            Toast.makeText(this, "Failed to create PDF: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//            Log.e("PDFCreationError", "Failed to create PDF: " + e.getMessage(), e);
+//        }
+//    }
 
     // Method untuk format currency menjadi lebih rapi
     private String formatCurrency(String value) {
@@ -728,7 +728,7 @@ public class menu_payment extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_STORAGE_PERMISSION);
         } else {
             // Izin sudah diberikan, panggil fungsi generatePdf()
-            generatePdf();
+//            generatePdf();
         }
     }
 
@@ -738,7 +738,7 @@ public class menu_payment extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_STORAGE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Izin diberikan, panggil fungsi generatePdf()
-                generatePdf();
+//                generatePdf();
             } else {
                 Toast.makeText(this, "Izin penyimpanan ditolak", Toast.LENGTH_SHORT).show();
             }

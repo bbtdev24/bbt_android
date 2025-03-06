@@ -220,7 +220,7 @@ public class form_mutasi_manager extends AppCompatActivity implements RadioGroup
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_manager",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -280,7 +280,7 @@ public class form_mutasi_manager extends AppCompatActivity implements RadioGroup
     private void getidentity() {
         final String idpengajuan = getIntent().getStringExtra("id");
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index?id_mutasi_rotasi=" + idpengajuan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index?id_mutasi_rotasi=" + idpengajuan,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -352,7 +352,7 @@ public class form_mutasi_manager extends AppCompatActivity implements RadioGroup
 
     private void jabatanakhir() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + akhir.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + akhir.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -401,7 +401,7 @@ public class form_mutasi_manager extends AppCompatActivity implements RadioGroup
     }
 
     private void jabatanawal() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + awal.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/jabatan/index?no_jabatan_karyawan=" + awal.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

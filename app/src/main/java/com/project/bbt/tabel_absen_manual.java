@@ -282,10 +282,12 @@ public class tabel_absen_manual extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        hideDialog();
 
                         try {
                             JSONObject obj = new JSONObject(response);
@@ -332,7 +334,7 @@ public class tabel_absen_manual extends AppCompatActivity {
                                 }
                                 adapter.notifyDataSetChanged();
 
-                                hideDialog();
+//                              hideDialog();
 
                                 Collections.sort(AbsensiList, new Comparator<absenmanualmodel>() {
                                     public int compare(absenmanualmodel o1, absenmanualmodel o2) {
@@ -352,6 +354,7 @@ public class tabel_absen_manual extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        hideDialog();
                         Toast.makeText(getApplicationContext(), "Maaf, anda belum pernah mengajukan absen manual", Toast.LENGTH_SHORT).show();
                     }
                 })
@@ -391,12 +394,12 @@ public class tabel_absen_manual extends AppCompatActivity {
         SimpleDateFormat convetDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return convetDateFormat.format(date);
     }
-    private void showDialog () {
+    private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
     }
 
-    private void hideDialog () {
+    private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
     }

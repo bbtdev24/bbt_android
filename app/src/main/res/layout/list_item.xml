@@ -1,138 +1,170 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
     android:id="@+id/listItem"
     android:orientation="vertical">
 
-
+    <!-- Bagian Tanggal -->
     <TextView
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tanggal"
         android:textColor="#000000"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:textStyle="bold" />
+
+    <!-- Baris Pertama (Absen, Lokasi, Waktu, Ket) -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/absen"
-            android:layout_width="30dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:maxLength="10"
             android:text="Absen"
             android:textColor="#000000"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/lokasi"
-            android:layout_width="87dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:gravity="center"
             android:maxLength="10"
             android:text="Lokasi"
             android:textColor="#000000"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/waktu"
-            android:layout_width="109dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:gravity="center"
             android:text="Waktu F1/F4"
             android:textColor="#000000"
-            android:textSize="10dp"
-            android:textStyle="bold"/>
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ket"
-            android:layout_width="65dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:maxLength="10"
             android:text="Ket."
             android:textColor="#000000"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Baris Kedua (IN, Lokasi Berangkat, Berangkat, Telat) -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/in"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:maxLength="10"
             android:text="IN"
             android:textColor="#000000"
-            android:textSize="10dp" />
+            android:textSize="10sp" />
+
         <TextView
-            android:textColor="#000000"
-            android:text="Lokasi Berangkat"
-            android:gravity="center"
             android:id="@+id/depof1"
-            android:layout_width="87dp"
-            android:layout_height="15dp"
-            android:textSize="10dp"/>
-        <TextView
-            android:textColor="#000000"
-            android:text="Berangkat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:gravity="center"
+            android:text="Lokasi Berangkat"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
             android:id="@+id/f1"
-            android:layout_width="109dp"
-            android:layout_height="15dp"
-            android:textSize="10dp"/>
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Berangkat"
+            android:textColor="#000000"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/telat"
-            android:layout_width="65dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:text="telat"
+            android:text="Telat"
             android:textColor="#000000"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Baris Ketiga (OUT, Lokasi Pulang, Pulang, Telat) -->
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/out"
-            android:layout_width="30dp"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:maxLength="10"
             android:text="OUT"
             android:textColor="#000000"
-            android:textSize="10dp" />
-        <TextView
-            android:textColor="#000000"
-            android:text="Lokasi Pulang"
-            android:gravity="center"
-            android:id="@+id/depof4"
-            android:layout_width="87dp"
-            android:layout_height="15dp"
-            android:textSize="10dp"/>
-        <TextView
-            android:textColor="#000000"
-            android:text="Pulang"
-            android:gravity="center"
-            android:id="@+id/f4"
-            android:layout_width="109dp"
-            android:layout_height="15dp"
-            android:textSize="10dp"/>
+            android:textSize="10sp" />
 
+        <TextView
+            android:id="@+id/depof4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Lokasi Pulang"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/f4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Pulang"
+            android:textColor="#000000"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="10sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
 </LinearLayout>

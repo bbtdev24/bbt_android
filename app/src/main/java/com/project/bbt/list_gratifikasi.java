@@ -225,10 +225,10 @@ public class list_gratifikasi extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        System.out.println("http://36.88.110.134:27/bbt_api/rest_server/pengajuan/gratifikasi/index?nik_baru="+ nik_baru+"&date="+date1+"&date2="+date2);
+        System.out.println("https://ess.banktanah.id/bbt_api/rest_server/pengajuan/gratifikasi/index?nik_baru="+ nik_baru+"&date="+date1+"&date2="+date2);
         adapter = new ListViewAdapterGratifikasi(gratifikasimodelList, getApplicationContext());
         adapter.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/gratifikasi/index?nik_baru="+ nik_baru+"&date="+date1+"&date2="+date2,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/gratifikasi/index?nik_baru="+ nik_baru+"&date="+date1+"&date2="+date2,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

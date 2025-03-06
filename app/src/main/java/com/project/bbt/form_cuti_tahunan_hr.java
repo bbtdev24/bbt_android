@@ -237,7 +237,7 @@ public class form_cuti_tahunan_hr extends AppCompatActivity implements RadioGrou
         );
         final String idkaryawan = getIntent().getStringExtra("id_cutitahunan");
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index?id_sisa_cuti=" + idkaryawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index?id_sisa_cuti=" + idkaryawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -277,7 +277,7 @@ public class form_cuti_tahunan_hr extends AppCompatActivity implements RadioGrou
 
                                 });
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/cuti/index?nik_baru=" + movieObject.getString("nik_baru"),
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/cuti/index?nik_baru=" + movieObject.getString("nik_baru"),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -386,7 +386,7 @@ public class form_cuti_tahunan_hr extends AppCompatActivity implements RadioGrou
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index_HrManager",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index_HrManager",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -458,7 +458,7 @@ public class form_cuti_tahunan_hr extends AppCompatActivity implements RadioGrou
     }
 
     private void hakcutiupdate() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Cuti_tahunan/index_hakcuti",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Cuti_tahunan/index_hakcuti",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

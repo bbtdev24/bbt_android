@@ -101,7 +101,7 @@ public class list_serahterima extends AppCompatActivity {
         serahterimamodelsList.clear();
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_penerima?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_penerima?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -353,7 +353,7 @@ public class list_serahterima extends AppCompatActivity {
             tanggal_2.setText(convertFormat(movieItem.getSubmit_date()));
             nikbaru.setText(movieItem.getNik_baru());
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -399,7 +399,7 @@ public class list_serahterima extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(list_serahterima.this);
             requestQueue.add(stringRequest);
 
-            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_penerima_1(),
+            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_penerima_1(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -444,7 +444,7 @@ public class list_serahterima extends AppCompatActivity {
             RequestQueue requestQueue2 = Volley.newRequestQueue(list_serahterima.this);
             requestQueue2.add(stringRequest2);
 
-            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_penerima_2(),
+            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_penerima_2(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

@@ -13,11 +13,14 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
@@ -81,6 +84,7 @@ public class menu_getin_getout extends AppCompatActivity {
     String str_nip_out, str_checktime_out, str_checktype_out, str_long_out, str_lat_out, str_foto_out;
 
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 100;
     private FusedLocationProviderClient fusedLocationClient;
     private LocationCallback locationCallback;
     private TextView tv_longlat, tv_time_getin, tv_time_getout;
@@ -173,7 +177,6 @@ public class menu_getin_getout extends AppCompatActivity {
         // Cek permission sebelum ambil lokasi
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            return;
         }
 
         // Dapatkan lokasi terakhir yang diketahui
@@ -182,8 +185,12 @@ public class menu_getin_getout extends AppCompatActivity {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null) {
-                            // Update TextView dengan longlat terbaru
+                            // Lokasi ditemukan, update tampilan
                             updateLongLatTextView(location);
+                        } else {
+//                            Toast.makeText(menu_getin_getout.this, "TES", Toast.LENGTH_SHORT).show();
+                            // Lokasi tidak ditemukan, coba refresh lokasi
+                            requestNewLocationData();
                         }
                     }
                 });
@@ -243,75 +250,171 @@ public class menu_getin_getout extends AppCompatActivity {
             }
         });
 
+        bt_getin.setEnabled(true);
+        bt_getin.setClickable(true);
+        bt_getin.setVisibility(View.VISIBLE);
+//        bt_getin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("DEBUG", "Tombol diklik, pindah ke menu_location_longlat luar");
+//
+//                // Panggil metode checkLocationAndShowDialog
+////                checkLocationAndShowDialog(latitude, longitude);
+//
+//                if (tv_time_getin.getText().toString().equals("-")) {
+//
+//                    Intent intent = new Intent(menu_getin_getout.this, menu_location_longlat.class);
+//                    intent.putExtra("getin", "1");
+//                    intent.putExtra("getout", "0");
+//                    Log.d("DEBUG", "Tombol diklik, pindah ke menu_location_longlat");
+//                    startActivity(intent);
+////                    if (img_background_foto_user.getDrawable() == null) {
+////
+////                        if (checkPermissionREAD_EXTERNAL_STORAGE(menu_getin_getout.this)) {
+////
+////                            cv = new ContentValues();
+////                            cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+////                            cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+////
+////                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+////
+////                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+////                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+////                            startActivityForResult(intent, 1);
+////
+////                        } else {
+////
+////                            Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+////                        }
+////
+////                    } else {
+////                        post_get_in();
+////                    }
+//
+//                } else {
+//                    Intent intent = new Intent(menu_getin_getout.this, menu_location_longlat.class);
+//                    intent.putExtra("getin", "1");
+//                    intent.putExtra("getout", "1");
+//                    Log.d("DEBUG", "Tombol diklik, pindah ke menu_location_longlat");
+//                    startActivity(intent);
+////                    if (img_background_foto_user.getDrawable() == null) {
+////
+////                        if (checkPermissionREAD_EXTERNAL_STORAGE(menu_getin_getout.this)) {
+////
+////                            cv = new ContentValues();
+////                            cv.put(MediaStore.Images.Media.TITLE, "My Picture");
+////                            cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+////
+////                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
+////
+////                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+////                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+////                            startActivityForResult(intent, 1);
+////
+////                        } else {
+////
+////                            Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
+////                        }
+////
+////                    } else {
+////                        post_get_out();
+////                    }
+//                }
+//
+//            }
+//        });
+
         bt_getin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("DEBUG", "Tombol bt_getin diklik");
 
-                // Panggil metode checkLocationAndShowDialog
-//                checkLocationAndShowDialog(latitude, longitude);
+                // Cek izin dulu sebelum lanjut
+                if (ActivityCompat.checkSelfPermission(menu_getin_getout.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(menu_getin_getout.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-                if (tv_time_getin.getText().toString().equals("-")) {
-
-                    Intent intent = new Intent(menu_getin_getout.this, menu_location_longlat.class);
-                    intent.putExtra("getin", "1");
-                    intent.putExtra("getout", "0");
-                    startActivity(intent);
-//                    if (img_background_foto_user.getDrawable() == null) {
-//
-//                        if (checkPermissionREAD_EXTERNAL_STORAGE(menu_getin_getout.this)) {
-//
-//                            cv = new ContentValues();
-//                            cv.put(MediaStore.Images.Media.TITLE, "My Picture");
-//                            cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
-//
-//                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
-//
-//                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-//                            startActivityForResult(intent, 1);
-//
-//                        } else {
-//
-//                            Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    } else {
-//                        post_get_in();
-//                    }
-
+                    // Minta izin dulu
+                    ActivityCompat.requestPermissions(menu_getin_getout.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 } else {
-                    Intent intent = new Intent(menu_getin_getout.this, menu_location_longlat.class);
-                    intent.putExtra("getin", "1");
-                    intent.putExtra("getout", "1");
-                    startActivity(intent);
-//                    if (img_background_foto_user.getDrawable() == null) {
-//
-//                        if (checkPermissionREAD_EXTERNAL_STORAGE(menu_getin_getout.this)) {
-//
-//                            cv = new ContentValues();
-//                            cv.put(MediaStore.Images.Media.TITLE, "My Picture");
-//                            cv.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
-//
-//                            imageUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, cv);
-//
-//                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                            intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-//                            startActivityForResult(intent, 1);
-//
-//                        } else {
-//
-//                            Toast.makeText(getApplicationContext(), "Tidak dapat mengakses kamera", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    } else {
-//                        post_get_out();
-//                    }
+                    // Kalau izin sudah ada, baru jalanin Intent
+                    startLocationActivity();
                 }
-
             }
         });
 
     }
+
+    // Fungsi buat mulai activity kalau izin udah ada
+    private void startLocationActivity() {
+        Intent intent = new Intent(menu_getin_getout.this, menu_location_longlat.class);
+
+        if (tv_time_getin.getText().toString().equals("-")) {
+            intent.putExtra("getin", "1");
+            intent.putExtra("getout", "0");
+        } else {
+            intent.putExtra("getin", "1");
+            intent.putExtra("getout", "1");
+        }
+
+        Log.d("DEBUG", "Pindah ke menu_location_longlat");
+        startActivity(intent);
+    }
+
+    private void requestNewLocationData() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setInterval(5000);
+        locationRequest.setFastestInterval(2000);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+        }
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, new LocationCallback() {
+            @Override
+            public void onLocationResult(@NonNull LocationResult locationResult) {
+                fusedLocationClient.removeLocationUpdates(this);
+                if (locationResult.getLocations().size() > 0) {
+                    Toast.makeText(menu_getin_getout.this, "1", Toast.LENGTH_SHORT).show();
+                    Location newLocation = locationResult.getLastLocation();
+                    updateLongLatTextView(newLocation);
+                } else {
+                    Toast.makeText(menu_getin_getout.this, "2", Toast.LENGTH_SHORT).show();
+                    // Masih gagal dapat lokasi, cek GPS aktif atau nggak
+                    checkGPSStatus();
+                }
+            }
+        }, Looper.getMainLooper());
+    }
+
+    private void checkGPSStatus() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        if (!isGPSEnabled) {
+            // GPS tidak aktif, minta user buat aktifin
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("GPS tidak aktif, nyalakan GPS untuk melanjutkan.")
+                    .setCancelable(false)
+                    .setPositiveButton("Aktifkan GPS", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    })
+                    .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                            Toast.makeText(menu_getin_getout.this, "GPS harus diaktifkan untuk mendapatkan lokasi", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            // GPS sudah aktif, coba ambil lokasi ulang
+            requestNewLocationData();
+        }
+    }
+
 
     private void post_get_in() {
         pDialog = new ProgressDialog(this);
@@ -322,7 +425,7 @@ public class menu_getin_getout extends AppCompatActivity {
 
         showDialog();
 
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/insert_absen_get_in",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/insert_absen_get_in",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -385,7 +488,7 @@ public class menu_getin_getout extends AppCompatActivity {
                 params.put("lat", str_latitude);
                 params.put("userCreate", string_nip_karyawan);
                 params.put("userDateCreate", formattedDate);
-                params.put("url_foto", "http://36.88.110.134:27/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
+                params.put("url_foto", "https://ess.banktanah.id/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
 
                 return params;
             }
@@ -411,7 +514,7 @@ public class menu_getin_getout extends AppCompatActivity {
 
         showDialog();
 
-        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/insert_absen_get_out",
+        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/insert_absen_get_out",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -474,7 +577,7 @@ public class menu_getin_getout extends AppCompatActivity {
                 params.put("lat", str_latitude);
                 params.put("userCreate", string_nip_karyawan);
                 params.put("userDateCreate", formattedDate);
-                params.put("url_foto", "http://36.88.110.134:27/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
+                params.put("url_foto", "https://ess.banktanah.id/bbt_api/rest_server/image/upload_absen_user/" + "IMG_"+ string_no_urut_karyawan + "_" + str_getin_or_getout + "-" + currentDateandTime2 + ".jpeg");
 
                 return params;
             }
@@ -493,7 +596,7 @@ public class menu_getin_getout extends AppCompatActivity {
 
     private void get_absen_karyawan_in() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index_get_absen_getin?nip=" + string_nip_karyawan + "&checktime=" + str_only_date + "&typeInsert=" + "MOBILE", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index_get_absen_getin?nip=" + string_nip_karyawan + "&checktime=" + str_only_date + "&typeInsert=" + "MOBILE", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -553,7 +656,7 @@ public class menu_getin_getout extends AppCompatActivity {
 
     private void get_absen_karyawan_out() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index_get_absen_getout?nip=" + string_nip_karyawan + "&checktime=" + str_only_date + "&typeInsert=" + "MOBILE", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index_get_absen_getout?nip=" + string_nip_karyawan + "&checktime=" + str_only_date + "&typeInsert=" + "MOBILE", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -646,7 +749,9 @@ public class menu_getin_getout extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        fusedLocationClient.removeLocationUpdates(locationCallback);
+        if (fusedLocationClient != null && locationCallback != null) {
+            fusedLocationClient.removeLocationUpdates(locationCallback);
+        }
     }
 
     @Override
@@ -713,11 +818,21 @@ public class menu_getin_getout extends AppCompatActivity {
                     Toast.makeText(menu_getin_getout.this, "GET_ACCOUNTS Denied", Toast.LENGTH_SHORT).show();
                 }
                 break;
+
+            case MY_PERMISSIONS_REQUEST_LOCATION:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // Kalau izin lokasi dikasih, lanjut proses lokasi
+                    startLocationActivity();
+                } else {
+                    Toast.makeText(menu_getin_getout.this, "Izin lokasi diperlukan untuk melanjutkan", Toast.LENGTH_SHORT).show();
+                }
+                break;
+
             default:
-                super.onRequestPermissionsResult(requestCode, permissions,
-                        grantResults);
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data); // Pastikan ini dipanggil di awal
@@ -793,7 +908,7 @@ public class menu_getin_getout extends AppCompatActivity {
 
     public void upload_foto_user() {
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_absen_user.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_absen_user.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

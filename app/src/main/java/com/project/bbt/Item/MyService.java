@@ -129,7 +129,7 @@ public class MyService extends Service {
                 String nik_baru = sharedPreferences.getString(KEY_NIK, null);
                 System.out.println("nik baru setelah diclose = " + nik_baru);
 
-                final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
+                final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -193,7 +193,7 @@ public class MyService extends Service {
 
                                                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                                                 String formattedDate = df.format(c);
-                                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index_keterangan?nik_baru="+nik+"&tanggal="+formattedDate,
+                                                StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index_keterangan?nik_baru="+nik+"&tanggal="+formattedDate,
                                                         new Response.Listener<String>() {
                                                             @Override
                                                             public void onResponse(String response) {
@@ -262,7 +262,7 @@ public class MyService extends Service {
                                         String lokasi = nama.getString("jabatan_struktur");
                                         final String tempat = nama.getString("lokasi_struktur");
                                         if (!lokasi.equals("jabatan")) {
-                                            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -385,7 +385,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -503,7 +503,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -621,7 +621,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -739,7 +739,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -857,7 +857,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -975,7 +975,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index_atasan?jabatan_struktur=" + lokasi,
+                                            StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index_atasan?jabatan_struktur=" + lokasi,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -1102,7 +1102,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest8 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + jabatan_karyawan,
+                                            StringRequest stringRequest8 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + jabatan_karyawan,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {
@@ -1226,7 +1226,7 @@ public class MyService extends Service {
                                                 }
                                             };
 
-                                            StringRequest stringRequest9 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + jabatan_karyawan,
+                                            StringRequest stringRequest9 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + jabatan_karyawan,
                                                     new Response.Listener<String>() {
                                                         @Override
                                                         public void onResponse(String response) {

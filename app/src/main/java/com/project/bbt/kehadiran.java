@@ -338,7 +338,7 @@ public class kehadiran extends AppCompatActivity {
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
         System.out.println("hasil =" + nik_baru);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -395,7 +395,7 @@ public class kehadiran extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index_new?shift_day="+ convertFormat2(tanggalawal.getText().toString()) +"&shift_day_2=" + convertFormat2(tanggalakhir.getText().toString()) + "&badgenumber=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index_new?shift_day="+ convertFormat2(tanggalawal.getText().toString()) +"&shift_day_2=" + convertFormat2(tanggalakhir.getText().toString()) + "&badgenumber=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -407,8 +407,8 @@ public class kehadiran extends AppCompatActivity {
                                 final JSONObject movieObject = movieArray.getJSONObject(i);
                                 final keteranganmodel movieItem = new keteranganmodel(
                                         movieObject.getString("shift_day"),
-                                        movieObject.getString("jadwal_masuk"),
-                                        movieObject.getString("jadwal_keluar"),
+                                        movieObject.getString("checkin"),
+                                        movieObject.getString("longlat_checkin"),
                                         movieObject.getString("checkout"),
                                         movieObject.getString("longlat_checkout"),
                                         movieObject.getString("ket_absensi"),
@@ -493,23 +493,24 @@ public class kehadiran extends AppCompatActivity {
             View listViewItem = inflater.inflate(R.layout.list_item, null, true);
 
             TextView tanggal = listViewItem.findViewById(R.id.date);
-            TextView depof1 = listViewItem.findViewById(R.id.depof1);
+            TextView longlat_checkin = listViewItem.findViewById(R.id.depof1);
             TextView f1 = listViewItem.findViewById(R.id.f1);
-            TextView depof4 = listViewItem.findViewById(R.id.depof4);
+            TextView longlat_checkout = listViewItem.findViewById(R.id.depof4);
             TextView f4 = listViewItem.findViewById(R.id.f4);
             TextView telat = listViewItem.findViewById(R.id.telat);
 
             keteranganmodel movieItem = getItem(position);
 
             tanggal.setText(convertFormat(movieItem.getShift_day()));
-            depof1.setText(movieItem.getDepo_f1());
+            longlat_checkin	.setText(movieItem.getDepo_f1());
+
             if(movieItem.getF1().equals("null")){
                 f1.setText("");
             } else {
                 f1.setText(tanggal(movieItem.getF1()));
             }
 
-            depof4.setText(movieItem.getDepo_f4());
+            longlat_checkout.setText(movieItem.getDepo_f4());
 
             if(movieItem.getF4().equals("null")){
                 f4.setText("");
@@ -521,15 +522,22 @@ public class kehadiran extends AppCompatActivity {
 
             if ("null".equalsIgnoreCase(f1.getText().toString())) {
                 f1.setBackgroundColor(Color.YELLOW);
+                f1.setText("-");
             }
-            if ("null".equalsIgnoreCase(depof1.getText().toString())) {
-                depof1.setBackgroundColor(Color.YELLOW);
+            if ("null".equalsIgnoreCase(longlat_checkin.getText().toString())) {
+                longlat_checkin.setBackgroundColor(Color.YELLOW);
+                longlat_checkin.setText("-");
+
             }
-            if ("null".equalsIgnoreCase(depof4.getText().toString())) {
-                depof4.setBackgroundColor(Color.YELLOW);
+            if ("null".equalsIgnoreCase(longlat_checkout.getText().toString())) {
+                longlat_checkout.setBackgroundColor(Color.YELLOW);
+                longlat_checkout.setText("-");
+
             }
             if ("null".equalsIgnoreCase(f4.getText().toString())) {
                 f4.setBackgroundColor(Color.YELLOW);
+                f4.setText("-");
+
             }
 
             return listViewItem;

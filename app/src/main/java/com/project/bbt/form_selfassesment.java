@@ -172,7 +172,7 @@ public class form_selfassesment extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/assessment/index_soal",
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/assessment/index_soal",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -242,7 +242,7 @@ public class form_selfassesment extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/assessment/index_jawaban?id=8",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/assessment/index_jawaban?id=8",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -321,7 +321,7 @@ public class form_selfassesment extends AppCompatActivity {
             }
             final int finalI = i;
 
-            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Assessment/index",
+            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Assessment/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -388,7 +388,7 @@ public class form_selfassesment extends AppCompatActivity {
                     startActivity(intent);
                 }
             } else {
-                final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Assessment/index",
+                final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Assessment/index",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -588,7 +588,7 @@ public class form_selfassesment extends AppCompatActivity {
 
 
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/assessment/index_jawaban?id="+ movieItem.getNo_pertanyaan(),
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/assessment/index_jawaban?id="+ movieItem.getNo_pertanyaan(),
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

@@ -168,7 +168,7 @@ public class lainnya extends AppCompatActivity {
                } else {
                    sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
                    String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-                   final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+                   final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                            new com.android.volley.Response.Listener<String>() {
                                @Override
                                public void onResponse(String response) {
@@ -302,7 +302,7 @@ public class lainnya extends AppCompatActivity {
 //        });
 
 
-        StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/SK/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
+        StringRequest stringRequest7 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/SK/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -375,7 +375,7 @@ public class lainnya extends AppCompatActivity {
         requestQueue.getCache().clear();
         requestQueue.add(stringRequest7);
 
-        StringRequest stringRequest8 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
+        StringRequest stringRequest8 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -445,7 +445,7 @@ public class lainnya extends AppCompatActivity {
         requestQueue2.getCache().clear();
         requestQueue2.add(stringRequest8);
 
-        StringRequest stringRequest9 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
+        StringRequest stringRequest9 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + menu.text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

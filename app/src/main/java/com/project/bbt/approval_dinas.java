@@ -40,10 +40,8 @@ public class approval_dinas extends AppCompatActivity {
     ImageButton fullday, nonfullday;
     private List<approvalfulldaymodel> movieItemList;
     private List<approvaldinasnonfullmodel> movieItemList2;
-
     TextView countfull, countnonfull;
     ProgressDialog pDialog;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +56,7 @@ public class approval_dinas extends AppCompatActivity {
                 Intent i = new Intent(approval_dinas.this, approval_dinas_full.class);
                 startActivity(i);
             }
+
         });
         nonfullday = (ImageButton) findViewById(R.id.nonfullday);
         nonfullday.setOnClickListener(new View.OnClickListener() {
@@ -83,7 +82,7 @@ public class approval_dinas extends AppCompatActivity {
         );
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur="+ lokasi,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur="+ lokasi,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -164,7 +163,7 @@ public class approval_dinas extends AppCompatActivity {
     private void getDetail2() {
         String lokasi = text_jabatan.getText().toString().trim();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur="+ lokasi,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur="+ lokasi,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

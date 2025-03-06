@@ -237,7 +237,7 @@ public class data_keluarga extends AppCompatActivity {
                             pDialog.setCancelable(false);
                             pDialog.show();
 
-                            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_anak",
+                            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_anak",
                                     new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
@@ -340,7 +340,7 @@ public class data_keluarga extends AppCompatActivity {
                             pDialog.setCancelable(false);
                             pDialog.show();
 
-                            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_anak",
+                            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_anak",
                                     new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
@@ -680,7 +680,7 @@ public class data_keluarga extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_suamiistri_NoUrut",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_suamiistri_NoUrut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -747,7 +747,7 @@ public class data_keluarga extends AppCompatActivity {
     }
 
     private void updateKeluarga() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_susunan_keluarga_NoUrut",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_susunan_keluarga_NoUrut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -819,7 +819,7 @@ public class data_keluarga extends AppCompatActivity {
     }
 
     private void updateDarurat() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_darurat_NoUrut",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_darurat_NoUrut",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -897,7 +897,7 @@ public class data_keluarga extends AppCompatActivity {
     // GET -----------------------------------------------------------------------------------------
     private void getDarurat(String nik_baru) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_darurat_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_darurat_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -951,7 +951,7 @@ public class data_keluarga extends AppCompatActivity {
     }
 
     private void getSusunanKeluarga(String nik_baru) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_susunanKeluarga_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_susunanKeluarga_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1043,7 +1043,7 @@ public class data_keluarga extends AppCompatActivity {
     private void getAnak(String nik_baru) {
         adapter = new ListViewAnakAdapter(anakModelList, getApplicationContext());
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_anak_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_anak_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1115,7 +1115,7 @@ public class data_keluarga extends AppCompatActivity {
     }
 
     private void getSuamiIstri(String nik_baru) {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_suamiistri_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_suamiistri_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1366,7 +1366,7 @@ public class data_keluarga extends AppCompatActivity {
                                 pDialog.setCancelable(false);
                                 pDialog.show();
 
-                                final StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_anak",
+                                final StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_anak",
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -1470,7 +1470,7 @@ public class data_keluarga extends AppCompatActivity {
                                 pDialog.setCancelable(false);
                                 pDialog.show();
 
-                                final StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_anak",
+                                final StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_anak",
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
@@ -1611,7 +1611,7 @@ public class data_keluarga extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_hapusAnak",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_hapusAnak",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

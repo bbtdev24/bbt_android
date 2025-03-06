@@ -213,7 +213,7 @@ public class approval_absenmanual extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + text_jabatan.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absen_manual2/index_atasan?jabatan_struktur=" + text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -376,7 +376,7 @@ public class approval_absenmanual extends AppCompatActivity {
 
             absenmanualmodel movieItem = getItem(position);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + movieItem.getNik_baru(),
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

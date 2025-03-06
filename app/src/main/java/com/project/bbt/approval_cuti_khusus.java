@@ -228,7 +228,7 @@ public class approval_cuti_khusus extends AppCompatActivity {
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index_get_cuti_khusus_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index_get_cuti_khusus_approval_atasan?id_divisi="+ string_id_divisi + "&id_bagian="+ string_id_bagian + "&id_jabatan=" + string_id_jabatan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -556,7 +556,7 @@ public class approval_cuti_khusus extends AppCompatActivity {
                 final int finalI = i;
                 System.out.println("angka akhir = " + x);
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {

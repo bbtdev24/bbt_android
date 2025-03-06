@@ -126,7 +126,7 @@ public class createshift extends AppCompatActivity {
         String[] splited_text = karyawan.split(" \\(");
         karyawan = splited_text[1];
         karyawan = karyawan.replace(")", "");
-        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + karyawan + "&shift_day=" + convertFormat2(tanggal.getText().toString()), new Response.Listener<String>() {
+        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + karyawan + "&shift_day=" + convertFormat2(tanggal.getText().toString()), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -316,7 +316,7 @@ public class createshift extends AppCompatActivity {
                     karyawan = splited_text[1];
                     karyawan = karyawan.replace(")", "");
                     System.out.println("hasil =" + karyawan);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -382,7 +382,7 @@ public class createshift extends AppCompatActivity {
 
                 }
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + karyawan,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + karyawan,
                         new com.android.volley.Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -535,7 +535,7 @@ public class createshift extends AppCompatActivity {
     }
 
     private void pengajuan() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/shifting/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/shifting/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -609,7 +609,7 @@ public class createshift extends AppCompatActivity {
         }
 
     private void update() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/shifting/index_jam",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/shifting/index_jam",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -666,7 +666,7 @@ public class createshift extends AppCompatActivity {
 
 
     private void getJam() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/jam.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/jam.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -720,7 +720,7 @@ public class createshift extends AppCompatActivity {
 
     private void getLokasi() {
         String lokasi = txt_lokasi.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

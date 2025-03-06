@@ -232,7 +232,7 @@ public class form_dinas_full extends AppCompatActivity implements RadioGroup.OnC
     private void getForm() {
         final String idkaryawan = getIntent().getStringExtra(LoginItem.KEY_NIK);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index?id_full_day=" + idkaryawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index?id_full_day=" + idkaryawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -322,7 +322,7 @@ public class form_dinas_full extends AppCompatActivity implements RadioGroup.OnC
                 android.R.color.transparent
         );
 
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -399,7 +399,7 @@ public class form_dinas_full extends AppCompatActivity implements RadioGroup.OnC
     }
 
     private void postNotif() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token_nik?nik_baru=" + nikbaru.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token_nik?nik_baru=" + nikbaru.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -426,7 +426,7 @@ public class form_dinas_full extends AppCompatActivity implements RadioGroup.OnC
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://203.100.57.36/project/ess-api-android-bt/rest_server/Push_Notification/push_notif_v1.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_v1.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {

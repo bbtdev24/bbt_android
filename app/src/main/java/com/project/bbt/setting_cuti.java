@@ -103,7 +103,7 @@ public class setting_cuti extends AppCompatActivity {
                         android.R.color.transparent
                 );
 
-                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_hakcuti",
+                StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_hakcuti",
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -198,7 +198,7 @@ public class setting_cuti extends AppCompatActivity {
     }
 
     private void updatehakcuti() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_statuscuti",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_statuscuti",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -338,7 +338,7 @@ public class setting_cuti extends AppCompatActivity {
     private void getSisaCuti() {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/cuti/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/cuti/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -398,7 +398,7 @@ public class setting_cuti extends AppCompatActivity {
     private void getBiodata() {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         final String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -413,7 +413,7 @@ public class setting_cuti extends AppCompatActivity {
                                 jabatan.setText(movieObject.getString("jabatan_karyawan"));
                                 tanggalmasuk.setText(convertFormat(movieObject.getString("join_date_struktur")));
 
-                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_nik?nik_baru=" + nik_baru,
+                                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_nik?nik_baru=" + nik_baru,
                                         new Response.Listener<String>() {
                                             @RequiresApi(api = Build.VERSION_CODES.O)
                                             @Override

@@ -161,7 +161,7 @@ public class data_induk extends AppCompatActivity {
                     pDialog.setTitleText("Harap Menunggu");
                     pDialog.setCancelable(false);
                     pDialog.show();
-                    StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_induk",
+                    StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_induk",
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -243,7 +243,7 @@ public class data_induk extends AppCompatActivity {
             }
         });
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index_induk_NoUrut?no_urut=" + string_no_urut_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index_induk_NoUrut?no_urut=" + string_no_urut_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -388,7 +388,7 @@ public class data_induk extends AppCompatActivity {
     }
 
     private void uploadKtp() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/upload_ktp.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/upload_ktp.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -293,7 +293,7 @@ public class dinasfull extends AppCompatActivity {
 
 //      Toast.makeText(this, "TES NIK " + LoginItem.KEY_NIK, Toast.LENGTH_SHORT).show();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index_get_rekap_dinas_full_day?nik_baru=" + string_nip_karyawan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index_get_rekap_dinas_full_day?nik_baru=" + string_nip_karyawan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

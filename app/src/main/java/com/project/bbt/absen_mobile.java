@@ -148,7 +148,7 @@ public class absen_mobile extends AppCompatActivity {
         );
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + nik_baru + "&shift_day=" + date.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index?nik_baru=" + nik_baru + "&shift_day=" + date.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -294,7 +294,7 @@ public class absen_mobile extends AppCompatActivity {
         movieItemList.clear();
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index?shift_day="+ date.getText().toString() +"&shift_day_2=" + date.getText().toString() + "&badgenumber=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index?shift_day="+ date.getText().toString() +"&shift_day_2=" + date.getText().toString() + "&badgenumber=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -429,7 +429,7 @@ public class absen_mobile extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index",
                 new Response.Listener<String>() {
 
                     @Override
@@ -496,7 +496,7 @@ public class absen_mobile extends AppCompatActivity {
         requestQueue2.add(stringRequest2);
     }
     private void absensimasuk() {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index_manualin",
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index_manualin",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

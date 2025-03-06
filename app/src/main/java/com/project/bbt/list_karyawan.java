@@ -194,7 +194,7 @@ public class list_karyawan extends AppCompatActivity {
         pDialog.getWindow().setBackgroundDrawableResource(
                 android.R.color.transparent
         );
-        final StringRequest stringRequest1 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/team/index?jabatan_struktur=" + text_jabatan.getText().toString(),
+        final StringRequest stringRequest1 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/team/index?jabatan_struktur=" + text_jabatan.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

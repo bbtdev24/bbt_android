@@ -210,7 +210,7 @@ public class approval_mutasi extends AppCompatActivity {
         );
         String jabatan = text_jabatan.getText().toString();
         movieItemList.clear();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + jabatan,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Mutasi_rotasi/index_atasan?jabatan_struktur=" + jabatan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

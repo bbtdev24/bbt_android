@@ -40,6 +40,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.project.bbt.Item.LoginItem;
 import com.project.bbt.Item.deptmodel;
 import com.project.bbt.Item.menu_payment;
@@ -90,8 +92,7 @@ import static android.app.PendingIntent.getActivity;
 import static com.project.bbt.izin.txt_nomor;
 
 
-public class menu extends AppCompatActivity implements BaseSliderView.OnSliderClickListener,
-        ViewPagerEx.OnPageChangeListener {
+public class menu extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     SliderLayout image_place_holder;
     public static String branchLokasi, department;
     private boolean reloadNeed = true;
@@ -129,16 +130,17 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
 
     String string_nip_karyawan, string_lokasi_karyawan, string_jabatan_karyawan,
             string_nama_karyawan, string_nama_divisi, string_id_jabatan, string_no_urut_karyawan;
-
     ImageView bellIcon;
     TextView notificationBadge;
 
+    private FirebaseAnalytics mFirebaseAnalytics;
+
     private static final String PREFS_NAME = "AppPreferences";
     private static final String KEY_SHOW_DIALOG = "showDialog";
-
     private SharedPreferences.Editor editor;
+    private static final String getURL = "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/gambar.php";
 
-    private static final String getURL = "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/gambar.php";
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -154,6 +156,22 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         boolean showDialog = preferences.getBoolean(KEY_SHOW_DIALOG, true);
 
+        // Inisialisasi Firebase Analytics
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        // Contoh: Kirim event ke Firebase Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.METHOD, "email");
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
+
+        // Test Crashlytics (Jangan lupa hapus di production)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
+        FirebaseCrashlytics.getInstance().log("App started!");
+
+        // Simulasi crash (cek di Firebase Crashlytics)
+//        findViewById(R.id.buttonCrash).setOnClickListener(v -> {
+//            throw new RuntimeException("Test Crashlytics");
+//        });
 
         mUpdateManager = UpdateManager.Builder(menu.this).mode(UpdateManagerConstant.IMMEDIATE);
         mUpdateManager.addUpdateInfoListener(new UpdateManager.UpdateInfoListener() {
@@ -207,7 +225,6 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         string_id_jabatan = sharedPreferences.getString("str_id_jabatan", null);
         string_no_urut_karyawan = sharedPreferences.getString("str_nourut_karyawan", null);
 
-
         txt_nik = (TextView) findViewById(R.id.txt_nik);
         txt_nama = (TextView) findViewById(R.id.txt_nama);
         txt_alpha = (TextView) findViewById(R.id.txt_jabatan);
@@ -224,11 +241,14 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         //jumlahcuti = (TextView) findViewById(R.id.jumlahcuti);
         //video = findViewById(R.id.video);
 
-
         txt_nik.setText(string_nip_karyawan);
         txt_nama.setText(string_nama_karyawan);
         txt_depart.setText(string_jabatan_karyawan);
         txt_alpha.setText(string_id_jabatan);
+
+        String nipwithoutdot = string_nip_karyawan.replaceAll("[^0-9]", "");
+        FirebaseCrashlytics crashlytics = FirebaseCrashlytics.getInstance();
+        crashlytics.setUserId(nipwithoutdot);
 
         other = (ImageButton) findViewById(R.id.other);
         biodata = (ImageButton) findViewById(R.id.biodata);
@@ -277,6 +297,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
 //            String extraValue = intent.getStringExtra("extra_key");
 //            System.out.println("Extra = " + extraValue);
 //        }
+
         FirebaseApp.initializeApp(this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, getURL, new Response.Listener<String>() {
@@ -369,6 +390,9 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 Intent i = new Intent(menu.this, izin.class);
                 i.putExtra(LoginItem.KEY_JABATAN, level_jabatan_karyawan);
                 startActivity(i);
+
+//                throw new RuntimeException("Test Crashlytics");
+
             }
         });
 
@@ -511,28 +535,39 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         // Panggil API untuk mendapatkan totalData terbaru
         get_training_badge(savedTotalData);
 
-        // Event ketika ikon bell diklik
         bellIcon.setOnClickListener(view -> {
             // Tampilkan ListView notifikasi
             // Misalnya: notificationListView.setVisibility(View.VISIBLE);
             notificationBadge.setVisibility(View.GONE); // Hilangkan badge
 
-            // Simpan totalData terbaru ke SharedPreferences
-            editor.putInt("totalData", Integer.parseInt(total_data_api_pemberitahuan));
-            editor.apply();
+            // Cek apakah total_data_api_pemberitahuan null atau kosong
+            if (total_data_api_pemberitahuan != null && !total_data_api_pemberitahuan.isEmpty()) {
+                editor.putInt("totalData", Integer.parseInt(total_data_api_pemberitahuan));
+                editor.apply();
+            } else {
+                // Atur nilai default jika null/kosong
+                editor.putInt("totalData", 0);
+                editor.apply();
+            }
 
             Intent i = new Intent(menu.this, menu_bell_training.class);
             startActivity(i);
         });
 
+
         System.out.println("savedTotalData " + savedTotalData);
 
         get_kelengkapan_data_pegawai();
 
+        // Cek & minta izin lokasi
+//        checkLocationPermission();
+
     }
 
+
+
     private void postNotifCutiTahunan() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -558,7 +593,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -633,7 +668,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void postNotifCutiKhusus() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -658,7 +693,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -733,7 +768,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void postNotifDinasNonFullDay() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -759,7 +794,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -834,7 +869,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void postNotifDinasFullDay() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -860,7 +895,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -966,7 +1001,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1018,7 +1053,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index_login_absensi?nip=" + nik_baru,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1111,7 +1146,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
 
                                         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                                         String formattedDate = df.format(c);
-                                        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/Absenmobile/index_keterangan?nik_baru=" + nik + "&tanggal=" + formattedDate,
+                                        StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/Absenmobile/index_keterangan?nik_baru=" + nik + "&tanggal=" + formattedDate,
                                                 new Response.Listener<String>() {
                                                     @Override
                                                     public void onResponse(String response) {
@@ -1221,7 +1256,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     private void getDetail() {
         String lokasi = text_jabatan.getText().toString();
         if (!lokasi.equals("jabatan")) {
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_full_day/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1277,7 +1312,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 }
             };
 
-            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest2 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/izin_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1333,7 +1368,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 }
             };
 
-            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest3 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_full_day/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1386,7 +1421,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 }
             };
 
-            StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest4 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/dinas_non_full_day/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1442,7 +1477,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 }
             };
 
-            StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest5 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_tahunan/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1496,7 +1531,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 }
             };
 
-            StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/cuti_khusus/index_atasan?jabatan_struktur=" + lokasi,
+            StringRequest stringRequest6 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/cuti_khusus/index_atasan?jabatan_struktur=" + lokasi,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -1608,7 +1643,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void postNotifIzinNonFullDay() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1634,7 +1669,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -1709,7 +1744,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void postNotifIzinFullDay() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_token?no_jabatan_karyawan=" + txt_nomor.getText().toString() + "&lokasi_hrd=" + txt_lokasi.getText().toString(),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -1735,7 +1770,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                     }
 
                     private void postNotifikasi(String device_token) {
-                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
+                        final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/Push_Notification/push_notif_eis.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
@@ -1857,7 +1892,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
 
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + nik_baru,
                 new com.android.volley.Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -2042,7 +2077,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
     }
 
     private void updateDeviceId(final String lokasi, final String szBranch, final String token) {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/master/Notifikasi/index_cekDeviceId",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/master/Notifikasi/index_cekDeviceId",
                 new Response.Listener<String>() {
 
                     @Override
@@ -2069,6 +2104,8 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
+                String appVersion = BuildConfig.VERSION_NAME;
+
                 SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 String currentDateandTime2 = sdf2.format(new Date());
 
@@ -2081,7 +2118,7 @@ public class menu extends AppCompatActivity implements BaseSliderView.OnSliderCl
                 params.put("device_model", Build.MODEL);
                 params.put("device_sdk", String.valueOf(Build.VERSION.SDK_INT));
                 params.put("device_version", Build.VERSION.RELEASE);
-                params.put("apps_version", "3.10.7");
+                params.put("apps_version", appVersion);
 
                 params.put("apps_last_open", currentDateandTime2);
                 params.put("device_token", token);

@@ -253,7 +253,7 @@ public class rangeshift extends AppCompatActivity {
                     karyawan = splited_text[1];
                     karyawan = karyawan.replace(")", "");
                     System.out.println("hasil =" + karyawan);
-                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
+                    StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + karyawan,
                             new Response.Listener<String>() {
                                 @Override
                                 public void onResponse(String response) {
@@ -312,7 +312,7 @@ public class rangeshift extends AppCompatActivity {
 
                 }
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/login/index?nik_baru=" + karyawan,
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/login/index?nik_baru=" + karyawan,
                         new com.android.volley.Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -371,7 +371,7 @@ public class rangeshift extends AppCompatActivity {
     }
 
     private void getJam() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/mobile_eis_2/jam.php", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/mobile_eis_2/jam.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -424,7 +424,7 @@ public class rangeshift extends AppCompatActivity {
 
     private void getLokasi() {
         String lokasi = txt_lokasi.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?lokasi_struktur=" + lokasi, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -494,7 +494,7 @@ public class rangeshift extends AppCompatActivity {
             System.out.println("Tanggal = " + tanggal);
 
             final int finalI = i;
-            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/shifting/index",
+            StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/shifting/index",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

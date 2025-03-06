@@ -108,7 +108,7 @@ public class sarandanmasukanexit extends AppCompatActivity {
                 e.printStackTrace();
             }
             final int finalI = i;
-            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_exitinterviewsaran",
+            final StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_exitinterviewsaran",
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -162,7 +162,7 @@ public class sarandanmasukanexit extends AppCompatActivity {
     }
 
     private void postfinal() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_exitinterviewfinal",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_exitinterviewfinal",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -285,7 +285,7 @@ public class sarandanmasukanexit extends AppCompatActivity {
                     }
                 });
 
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/resign/index_soalexit", new Response.Listener<String>() {
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/resign/index_soalexit", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         viewHolder.Jawaban.add("== Pilih Jawaban ==");

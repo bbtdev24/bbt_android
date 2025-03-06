@@ -87,7 +87,7 @@ public class rekapabsensi extends AppCompatActivity {
 
         System.out.println("test 111 = " + jabatan);
 
-        StringRequest stringRequest1 = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/team/index?jabatan_struktur=" + jabatan,
+        StringRequest stringRequest1 = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/team/index?jabatan_struktur=" + jabatan,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -208,7 +208,7 @@ public class rekapabsensi extends AppCompatActivity {
             String nik_baru = getItem(position).getNik_baru();
             System.out.println("nik222 =" + nik_baru);
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/api/absensi/index?shift_day="+firstdate+"&shift_day_2="+lastdate+"&badgenumber="+nik_baru,
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/api/absensi/index?shift_day="+firstdate+"&shift_day_2="+lastdate+"&badgenumber="+nik_baru,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

@@ -206,7 +206,7 @@ public class pengajuan_vaksin extends AppCompatActivity {
                 android.R.color.transparent
         );
         pDialog.setCancelable(false);
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/pengajuan/vaksin/index",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/pengajuan/vaksin/index",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -265,7 +265,7 @@ public class pengajuan_vaksin extends AppCompatActivity {
     }
 
     private void upload1() {
-        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "http://36.88.110.134:27/bbt_api/rest_server/php/upload_image_vaksin.php",
+        StringRequest stringRequest2 = new StringRequest(Request.Method.POST, "https://ess.banktanah.id/bbt_api/rest_server/php/upload_image_vaksin.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -435,7 +435,7 @@ public class pengajuan_vaksin extends AppCompatActivity {
     private void getBiodata() {
         sharedPreferences = getSharedPreferences("user_details", MODE_PRIVATE);
         String nik_baru = sharedPreferences.getString(LoginItem.KEY_NIK, null);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://36.88.110.134:27/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "https://ess.banktanah.id/bbt_api/rest_server/master/karyawan/index?nik_baru=" + nik_baru,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
